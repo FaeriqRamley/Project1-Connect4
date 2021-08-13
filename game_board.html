@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet"/>
+    <title>Connect 4</title>
+</head>
+<body>
+    <div id="board-display">
+    </div>
+    <div class="user-interface">
+        <p>Turn Number <span id="turnNum"> </span></p>
+        <button onClick="startGame()">Start Game</button>
+        <br/>
+        <br/>
+        <label for="moves">Select your move</label>
+        <br/>
+        <span>
+            <select id="moves">
+                <option value=0>0</option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+            </select>
+            <button onClick="makeMove()">Make a move</button>
+        </span>    
+    </div>
+
+    <script src="Scripts/game_board.js"></script>
+</body>
+</html>
