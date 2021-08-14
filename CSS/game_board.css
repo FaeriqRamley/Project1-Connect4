@@ -1,8 +1,11 @@
-.user-interface {
+.container {
     border: 1px solid black;
-    padding:5px;
 }
-
 #board-display {
     border: 1px solid black;
+}
+
+#game-wrapper {
+    display: block;
+    text-align: center;
 }

@@ -4,34 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link href="CSS/game_board.css" rel="stylesheet"/>
     <title>Connect 4</title>
 </head>
 <body>
-    <div id="board-display">
-    </div>
-    <div class="user-interface">
-        <p>Turn Number <span id="turnNum"> </span></p>
-        <button onClick="startGame()">Start Game</button>
-        <br/>
-        <br/>
-        <label for="moves">Select your move</label>
-        <br/>
-        <span>
-            <select id="moves">
-                <option value=0>0</option>
-                <option value=1>1</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-                <option value=6>6</option>
-                <option value=7>7</option>
-            </select>
-            <button onClick="makeMove()">Make a move</button>
-        </span>    
+    
+    <div class="container" id="game-wrapper">
+        <div id="game-display">
+            <h3>Turn Number</h3>
+        </div>
+        <div id="board-display">
+        </div>
+        <div id="user-interface">
+            <p>Turn Number <span id="turnNum"> </span></p>
+            <button id="button-game-start">Start Game</button>
+            <br/>
+            <br/>
+            <label for="moves">Select your move</label>
+            <br/>
+            <span>
+                <select id="moves">
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=6>6</option>
+                    <option value=7>7</option>
+                </select>
+                <button onClick="makeMove()">Make a move</button>
+            </span>    
+        </div>
     </div>
 
+
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script src="Scripts/game_board.js"></script>
 </body>
 </html>
