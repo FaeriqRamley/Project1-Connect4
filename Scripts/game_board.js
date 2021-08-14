@@ -127,6 +127,17 @@ const displayBoard = (board) => {
 
 const startGame = () => {
     displayBoard(gameBoard.board);
+    gameTurn = 0;
+    updateTurnStatus();
+}
+
+const updateTurnStatus = (turnChange=0) => {
+    const gameTurnDisplay = document.querySelector("#display-turn-number");
+    const playerTurnDisplay = document.querySelector("#display-player-turn");
+    gameTurn += turnChange
+    console.log(`gameTurn = ${gameTurn}`);
+    gameTurnDisplay.children[1].innerText = `${gameTurn}`;
+    playerTurnDisplay.children[1].innerText = `${gameTurn%2+1}`;
 
 }
 
@@ -139,7 +150,7 @@ const makeMove = () => {
         if (outcome.result){
             console.log(`Player ${outcome.player} wins!`)
         }
-        gameTurn++;
+        updateTurnStatus(1);
     }
 }
 
@@ -157,7 +168,7 @@ const makeMove = () => {
 
 //// Invocations
 const gameBoard = new Board();
-const gameTurn = 0;
+let gameTurn = 0;
 displayBoard(gameBoard.board);
 
 document.querySelector("#button-game-start").addEventListener("click",startGame)
