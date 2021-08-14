@@ -38,6 +38,7 @@ class Board {
     //function to check if this move was played what will happen
     //returns checkWin object
     checkAdd (col,currPlayer){
+
         if (this.board[0][col] !== 0){
             return {result:false,player:0,valid:false}
 
@@ -48,13 +49,17 @@ class Board {
                 if(this.board[i][col] !== 0){
                     this.board[i-1][col] = currPlayer;
                     rowPlaced = i-1;
+                    break;
                 }
             }
-            this.board[this.board.length-1][col] = currPlayer;
+            if (this.board[this.board.length-1][col] === 0){
+                this.board[this.board.length-1][col] = currPlayer;
+            }
 
             const outcome = this.checkWin();
             this.board[rowPlaced][col] = 0;
             outcome["valid"] = true;
+
             return outcome;
         }
     }
@@ -175,14 +180,15 @@ const toggleGameButtons = (toggle) => {
     }
 }
 
-const makeMove = (move) => {
-    madeValidMove = gameBoard.add(parseInt(move),gameStatus.turn%2+1)
+const makeMove = (move,player) => {
+    madeValidMove = gameBoard.add(parseInt(move),player)
     
     if (madeValidMove){
         displayBoard(gameBoard.board);
         const outcome = gameBoard.checkWin();
         if (outcome.result){
             console.log(`Player ${outcome.player} wins!`)
+            gameStatus.gameEnd = true;
             toggleGameButtons(false);
         } else {
             updateTurnStatus(1);
@@ -202,26 +208,19 @@ const onClickMakeMove = (e) => {
     }
 
     const move = e.target.value;
-    makeMove(move);
-
-    if(gameStatus.mode === "ezBot"){
-        easyBot(gameBoard,gameStatus.turn%2+1);
+    
+    if(gameStatus.mode === "hotSeat"){
+        makeMove(move,gameStatus.turn%2+1);
+    } else if(gameStatus.mode === "ezBot"){
+        makeMove(move,gameStatus.turn%2+1);
+        if(!gameStatus.gameEnd){
+            easyBot(gameBoard,gameStatus.turn%2+1);
+        }
+        
     }
 
-
+    
 }
-
-// // Save for EasyBot
-// const makeRandomMove = () => {
-//     let madeValidMove = false;
-//     while (madeValidMove === false){
-//         let randomMove = Math.floor(Math.random()*gameBoard.board[0].length);
-
-//         madeValidMove = gameBoard.add(randomMove,gameTurn%2+1)
-//     }
-//     gameTurn++;
-//     displayBoard(gameBoard.board);
-// }
 
 //// Invocations
 let gameBoard = new Board();

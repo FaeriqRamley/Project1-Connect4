@@ -1,15 +1,14 @@
 const easyBot = (gameBoard,botPlayerNum) => {
     const moveOutcomes = [];
     const moveValues = [];
-    
-    console.log("Bot start")
+
     //Try all moves
     for (let testMove = 0; testMove < 8; testMove++){
-        console.log(`testing move ${testMove}`)
+        // console.log(`testing move ${testMove}`)
         moveOutcomes.push(gameBoard.checkAdd(testMove,botPlayerNum));
     }
-    console.log("Outcomes gathered:");
-    console.log(moveOutcomes);
+    // console.log("Outcomes gathered:");
+    // console.log(moveOutcomes);
     //Assign value to moves
     for (const outcome of moveOutcomes){
         let outcomeValue = 0;
@@ -26,11 +25,11 @@ const easyBot = (gameBoard,botPlayerNum) => {
         }
         moveValues.push(outcomeValue);
     }
-    console.log("Move values:");
-    console.log(moveValues);
+    // console.log("Move values:");
+    // console.log(moveValues);
     //Determine highest value
     const highestValue = Math.max(...moveValues);
-    console.log(`HighestValue:${highestValue}`);
+    // console.log(`HighestValue:${highestValue}`);
     //Choose random among same value moves
     const highestValueList = [];
     for (let i=0; i<moveValues.length; i++){
@@ -41,9 +40,10 @@ const easyBot = (gameBoard,botPlayerNum) => {
 
     const randomChoice = Math.floor(Math.random()*highestValueList.length);
     const chosenMove = highestValueList[randomChoice];
-    console.log(`Highest value list: ${highestValueList}`);
-    console.log(`Random number: ${randomChoice}`);
+    // console.log(`Highest value list: ${highestValueList}`);
+    // console.log(`Random number: ${randomChoice}`);
     console.log(`Chosen Move: ${chosenMove}`);
-    makeMove(chosenMove);
+    console.log(gameBoard.board);
+    makeMove(chosenMove,botPlayerNum);
 
 }
