@@ -2,9 +2,15 @@
     border: 1px solid black;
 }
 
+#game-wrapper {
+    display: block;
+    text-align: center;
+}
+
+
 /* ---------- Game Display ---------- */
 #game-display {
-    line-height:300%;
+    color: black;
 }
 /* ---------- ------------ ---------- */
 
@@ -33,11 +39,6 @@
     border: 3px solid black;
     grid-template-columns: repeat(8,1fr);
     grid-template-rows: repeat(7,1fr);
-}
-
-#game-wrapper {
-    display: block;
-    text-align: center;
 }
 
 #board-display div {
