@@ -111,24 +111,35 @@ class Board {
     }
 }
 
-let gameBoard = new Board();
-let gameTurn = 0;
-let turnDisplay = document.getElementById("turnNum")
-turnDisplay.innerHTML = gameTurn;
+let testBoard = new Board();
 
-
+testBoard.board = [
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,2,0,0,0,0],
+    [0,1,1,2,1,0,0,0]
+]
 
 
 const displayBoard = (board) => {
-    for (const row of board){
-        console.log(row);
+    const displayGrid = document.querySelector("#board-display")
+    for (let row = 0; row<board.length;row++){
+        for (let col = 0; col<board[row].length;col++){
+            const gamePiece = document.createElement("div");
+            gamePiece.className = `player-${board[row][col]}`
+            gamePiece.style.gridColumnStart = `${col+1}`;
+            gamePiece.style.gridRowStart = `${row+1}`;
+            gamePiece.innerText = "O";
+            displayGrid.append(gamePiece);
+        }
     }
 }
 
 const startGame = () => {
-    gameBoard = new Board();
-    console.log("New board created");
-    displayBoard(gameBoard.board);
+    displayBoard(testBoard.board);
 }
 
 const makeRandomMove = () => {
@@ -156,3 +167,6 @@ const makeMove = () => {
         gameTurn++;
     }
 }
+
+
+document.querySelector("#button-game-start").addEventListener("click",startGame)

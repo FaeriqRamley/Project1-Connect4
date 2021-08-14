@@ -2,10 +2,42 @@
     border: 1px solid black;
 }
 #board-display {
-    border: 1px solid black;
+    margin:auto;
+    background-color: blue;
+    width:400px;
+    height:350px;
+    display:grid;
+    border: 3px solid black;
+    grid-template-columns: repeat(8,1fr);
+    grid-template-rows: repeat(7,1fr);
 }
 
 #game-wrapper {
     display: block;
     text-align: center;
 }
+
+#board-display div {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 3px solid black;
+    margin:5px auto;
+    
+}
+
+#board-display .player-0 {
+    background-color: white;
+    font-size:0px;
+}
+
+#board-display .player-1 {
+    background-color: red;
+    font-size:0px;
+}
+
+#board-display .player-2 {
+    background-color: yellow;
+    font-size:0px;
+}
+
