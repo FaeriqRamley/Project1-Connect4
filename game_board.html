@@ -11,30 +11,25 @@
 <body>
     
     <div class="container" id="game-wrapper">
-        <div id="game-display">
-            <h3>Turn Number</h3>
+        <div class="container" id="game-display">
+            <div class="row">
+                <div class="col">Player Turn<div>0</div></div>
+                <div class="col">Turn Number</div>
+            </div>
         </div>
-        <div id="piece-dropper"></div>
+        <div id="piece-dropper">
+            <button value="0"></button>
+            <button value="1"></button>
+            <button value="2"></button>
+            <button value="3"></button>
+            <button value="4"></button>
+            <button value="5"></button>
+            <button value="6"></button>
+            <button value="7"></button>
+        </div>
         <div id="board-display"></div>
         <div id="user-interface">
             <button id="button-game-start">Start Game</button>
-            <br/>
-            <br/>
-            <label for="moves">Select your move</label>
-            <br/>
-            <span>
-                <select id="moves">
-                    <option value=0>0</option>
-                    <option value=1>1</option>
-                    <option value=2>2</option>
-                    <option value=3>3</option>
-                    <option value=4>4</option>
-                    <option value=5>5</option>
-                    <option value=6>6</option>
-                    <option value=7>7</option>
-                </select>
-                <button onClick="makeMove()">Make a move</button>
-            </span>    
         </div>
     </div>
 

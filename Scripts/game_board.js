@@ -111,19 +111,6 @@ class Board {
     }
 }
 
-let testBoard = new Board();
-
-testBoard.board = [
-    [0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0],
-    [0,0,0,2,0,0,0,0],
-    [0,1,1,2,1,0,0,0]
-]
-
-
 const displayBoard = (board) => {
     const displayGrid = document.querySelector("#board-display")
     for (let row = 0; row<board.length;row++){
@@ -139,23 +126,11 @@ const displayBoard = (board) => {
 }
 
 const startGame = () => {
-    displayBoard(testBoard.board);
-}
-
-const makeRandomMove = () => {
-    let madeValidMove = false;
-    while (madeValidMove === false){
-        let randomMove = Math.floor(Math.random()*gameBoard.board[0].length);
-
-        madeValidMove = gameBoard.add(randomMove,gameTurn%2+1)
-    }
-    gameTurn++;
     displayBoard(gameBoard.board);
+
 }
 
 const makeMove = () => {
-    const moveList = document.getElementById("moves");
-    const move = moveList.options[moveList.selectedIndex].value;
     madeValidMove = gameBoard.add(move,gameTurn%2+1)
     
     if (madeValidMove){
@@ -168,5 +143,21 @@ const makeMove = () => {
     }
 }
 
+// // Save for EasyBot
+// const makeRandomMove = () => {
+//     let madeValidMove = false;
+//     while (madeValidMove === false){
+//         let randomMove = Math.floor(Math.random()*gameBoard.board[0].length);
+
+//         madeValidMove = gameBoard.add(randomMove,gameTurn%2+1)
+//     }
+//     gameTurn++;
+//     displayBoard(gameBoard.board);
+// }
+
+//// Invocations
+const gameBoard = new Board();
+const gameTurn = 0;
+displayBoard(gameBoard.board);
 
 document.querySelector("#button-game-start").addEventListener("click",startGame)

@@ -1,9 +1,32 @@
 .container {
     border: 1px solid black;
 }
+
+/* ---------- Game Display ---------- */
+#game-display {
+    line-height:300%;
+}
+/* ---------- ------------ ---------- */
+
+/* ---------- Piece Dropper ---------- */
+#piece-dropper {
+    margin: auto;
+    width: 400px;
+    height: 50px;
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+}
+
+#piece-dropper button {
+    background: transparent;
+}
+/* ---------- ------------- ---------- */
+
+
+/* ---------- Board Stuff ---------- */
 #board-display {
     margin:auto;
-    background-color: blue;
+    background-color:blue;
     width:400px;
     height:350px;
     display:grid;
@@ -41,3 +64,4 @@
     font-size:0px;
 }
 
+/* ---------- ---------- ---------- */
