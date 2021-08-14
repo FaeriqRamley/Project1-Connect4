@@ -135,13 +135,24 @@ const updateTurnStatus = (turnChange=0) => {
     const gameTurnDisplay = document.querySelector("#display-turn-number");
     const playerTurnDisplay = document.querySelector("#display-player-turn");
     gameTurn += turnChange
-    console.log(`gameTurn = ${gameTurn}`);
+
     gameTurnDisplay.children[1].innerText = `${gameTurn}`;
     playerTurnDisplay.children[1].innerText = `${gameTurn%2+1}`;
 
 }
 
-const makeMove = () => {
+const onClickMakeMove = (e) => {
+    if (e.target.tagName !== "BUTTON"){
+        return null;
+    }
+
+    const playerTurnDisplay = document.querySelector("#display-player-turn").children[1].innerText;
+    if (playerTurnDisplay !== "1" && playerTurnDisplay !== "2"){
+        console.log("Press Start Game to play")
+        return null;
+    }
+
+    const move = e.target.value;
     madeValidMove = gameBoard.add(move,gameTurn%2+1)
     
     if (madeValidMove){
@@ -150,6 +161,7 @@ const makeMove = () => {
         if (outcome.result){
             console.log(`Player ${outcome.player} wins!`)
         }
+
         updateTurnStatus(1);
     }
 }
@@ -171,4 +183,5 @@ const gameBoard = new Board();
 let gameTurn = 0;
 displayBoard(gameBoard.board);
 
-document.querySelector("#button-game-start").addEventListener("click",startGame)
+document.querySelector("#button-game-start").addEventListener("click",startGame);
+document.querySelector("#piece-dropper").addEventListener("click",onClickMakeMove);
