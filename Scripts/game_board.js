@@ -126,19 +126,43 @@ const displayBoard = (board) => {
 }
 
 const startGame = () => {
+    gameBoard = new Board();
     displayBoard(gameBoard.board);
-    gameTurn = 0;
+    gameStatus.gameTurn = 0;
+    toggleGameButtons(true);
     updateTurnStatus();
 }
 
 const updateTurnStatus = (turnChange=0) => {
     const gameTurnDisplay = document.querySelector("#display-turn-number");
     const playerTurnDisplay = document.querySelector("#display-player-turn");
-    gameTurn += turnChange
+    
+    gameStatus.gameTurn += turnChange;
+    gameTurnDisplay.children[1].innerText = `${gameStatus.gameTurn}`;
+    playerTurnDisplay.children[1].innerText = `${gameStatus.gameTurn%2+1}`;
 
-    gameTurnDisplay.children[1].innerText = `${gameTurn}`;
-    playerTurnDisplay.children[1].innerText = `${gameTurn%2+1}`;
+}
 
+const makeMove = (move) => {
+    madeValidMove = gameBoard.add(parseInt(move),gameStatus.gameTurn%2+1)
+    
+    if (madeValidMove){
+        displayBoard(gameBoard.board);
+        const outcome = gameBoard.checkWin();
+        if (outcome.result){
+            console.log(`Player ${outcome.player} wins!`)
+            toggleGameButtons(false);
+        }
+
+        updateTurnStatus(1);
+    }
+}
+
+const toggleGameButtons = (toggle) => {
+    const pieceDropper = document.querySelector("#piece-dropper")
+    for (const button of pieceDropper.children){
+        button.disabled = !toggle;
+    }
 }
 
 const onClickMakeMove = (e) => {
@@ -153,17 +177,7 @@ const onClickMakeMove = (e) => {
     }
 
     const move = e.target.value;
-    madeValidMove = gameBoard.add(move,gameTurn%2+1)
-    
-    if (madeValidMove){
-        displayBoard(gameBoard.board);
-        const outcome = gameBoard.checkWin();
-        if (outcome.result){
-            console.log(`Player ${outcome.player} wins!`)
-        }
-
-        updateTurnStatus(1);
-    }
+    makeMove(move);
 }
 
 // // Save for EasyBot
@@ -179,8 +193,10 @@ const onClickMakeMove = (e) => {
 // }
 
 //// Invocations
-const gameBoard = new Board();
-let gameTurn = 0;
+let gameBoard = new Board();
+// **change gameMode value to variable later
+const gameStatus = {gameEnd: false, winner:0, gameTurn:0, gameMode:"hotSeat"};
+
 displayBoard(gameBoard.board);
 
 document.querySelector("#button-game-start").addEventListener("click",startGame);
