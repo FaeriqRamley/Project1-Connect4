@@ -43,7 +43,7 @@ class Board {
 
         } else {
             //row where piece was add
-            const rowPlaced = this.board.length-1;
+            let rowPlaced = this.board.length-1;
             for (let i=1;i<this.board.length;i++){
                 if(this.board[i][col] !== 0){
                     this.board[i-1][col] = currPlayer;
@@ -51,12 +51,12 @@ class Board {
                 }
             }
             this.board[this.board.length-1][col] = currPlayer;
-        }
 
-        const outcome = this.checkWin();
-        this.board[rowPlaced][col] = 0;
-        outcome["valid"] = true;
-        return outcome;
+            const outcome = this.checkWin();
+            this.board[rowPlaced][col] = 0;
+            outcome["valid"] = true;
+            return outcome;
+        }
     }
 
     checkWin(){
@@ -153,7 +153,7 @@ const displayBoard = (board) => {
 const startGame = () => {
     gameBoard = new Board();
     displayBoard(gameBoard.board);
-    gameStatus.gameTurn = 0;
+    gameStatus.turn = 0;
     toggleGameButtons(true);
     updateTurnStatus();
 }
@@ -162,9 +162,9 @@ const updateTurnStatus = (turnChange=0) => {
     const gameTurnDisplay = document.querySelector("#display-turn-number");
     const playerTurnDisplay = document.querySelector("#display-player-turn");
     
-    gameStatus.gameTurn += turnChange;
-    gameTurnDisplay.children[1].innerText = `${gameStatus.gameTurn}`;
-    playerTurnDisplay.children[1].innerText = `${gameStatus.gameTurn%2+1}`;
+    gameStatus.turn += turnChange;
+    gameTurnDisplay.children[1].innerText = `${gameStatus.turn}`;
+    playerTurnDisplay.children[1].innerText = `${gameStatus.turn%2+1}`;
 
 }
 
@@ -176,7 +176,7 @@ const toggleGameButtons = (toggle) => {
 }
 
 const makeMove = (move) => {
-    madeValidMove = gameBoard.add(parseInt(move),gameStatus.gameTurn%2+1)
+    madeValidMove = gameBoard.add(parseInt(move),gameStatus.turn%2+1)
     
     if (madeValidMove){
         displayBoard(gameBoard.board);
@@ -203,6 +203,12 @@ const onClickMakeMove = (e) => {
 
     const move = e.target.value;
     makeMove(move);
+
+    if(gameStatus.mode === "ezBot"){
+        easyBot(gameBoard,gameStatus.turn%2+1);
+    }
+
+
 }
 
 // // Save for EasyBot
@@ -220,7 +226,7 @@ const onClickMakeMove = (e) => {
 //// Invocations
 let gameBoard = new Board();
 // **change gameMode value to variable later
-const gameStatus = {gameEnd: false, winner:0, gameTurn:0, gameMode:"hotSeat"};
+const gameStatus = {gameEnd: false, winner:0, turn:0, mode:"ezBot"};
 
 displayBoard(gameBoard.board);
 
