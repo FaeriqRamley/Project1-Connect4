@@ -1,61 +1,11 @@
 'use strict';
 
-const easyBot = (gameBoard,botPlayerNum) => {
-    const moveOutcomes = [];
-    const moveValues = [];
-
-    //Try all moves
-    for (let testMove = 0; testMove < 8; testMove++){
-        moveOutcomes.push(gameBoard.checkAdd(testMove,botPlayerNum));
-    }
-
-    //Assign value to moves
-    for (const outcome of moveOutcomes){
-        let outcomeValue = 0;
-        if (outcome.valid){
-            if (outcome.result === true){
-                if (outcome.player === botPlayerNum){
-                    outcomeValue = 1;
-                } else {
-                    outcomeValue = -1;
-                }
-            }
-        } else {
-            outcomeValue = NaN;
-        }
-        moveValues.push(outcomeValue);
-    }
-
-    //Determine highest value
-    const highestValue = Math.max(...moveValues);
-    //Choose random among same value moves
-    const highestValueList = [];
-    for (let i=0; i<moveValues.length; i++){
-        if (moveValues[i] === highestValue){
-            highestValueList.push(i)
-        }
-    }
-
-    const randomChoice = Math.floor(Math.random()*highestValueList.length);
-    const chosenMove = highestValueList[randomChoice];
-    // console.log(`Highest value list: ${highestValueList}`);
-    // console.log(`Random number: ${randomChoice}`);
-    // console.log(`Chosen Move: ${chosenMove}`);
-    // console.log(gameBoard.board);
-    makeMove(chosenMove,botPlayerNum);
-
-}
-
-
-
 const medBot = (prevBoard,botPlayerNum,currPlayer,highestDepth,depth) => {
     const boardOutcomes = [];
     const moveValues = [];
-    //Try all moves
-        //If move is valid, duplicate a new board
-        //Make move on duplicated board
-        //Add to move to boardOutcomes
-        //Else if move is invalid, push a NaN
+    //Try all moves ${depth} steps deep
+    //Assign values to each outcome
+    //Return max outcome for bot's turn and min outcome for player's turn
 
     for (let move = 0; move<8; move++){
         

@@ -44,35 +44,6 @@ class Board {
         }
     }
 
-    //function to check if this move was played what will happen
-    //returns checkWin object
-    // checkAdd (col,currPlayer){
-
-    //     if (this.board[0][col] !== 0){
-    //         return {result:false,player:0,valid:false}
-
-    //     } else {
-    //         //row where piece was add
-    //         let rowPlaced = this.board.length-1;
-    //         for (let i=1;i<this.board.length;i++){
-    //             if(this.board[i][col] !== 0){
-    //                 this.board[i-1][col] = currPlayer;
-    //                 rowPlaced = i-1;
-    //                 break;
-    //             }
-    //         }
-    //         if (this.board[this.board.length-1][col] === 0){
-    //             this.board[this.board.length-1][col] = currPlayer;
-    //         }
-
-    //         const outcome = this.checkWin();
-    //         this.board[rowPlaced][col] = 0;
-    //         outcome["valid"] = true;
-
-    //         return outcome;
-    //     }
-    // }
-
     checkWin(){
         const boardCols = this.board[0].length;
         const boardRows = this.board.length;
