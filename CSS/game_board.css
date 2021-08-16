@@ -66,3 +66,16 @@
 }
 
 /* ---------- ---------- ---------- */
+
+/* ---------- Modal Settings ---------- */
+.modal-content{
+    background-color: bisque;
+    border: 3px solid rgb(61 40 4);
+}
+.modal-header{
+    justify-content:center;
+}
+.modal-body{
+    text-align: center;
+}
+/* ---------- -------------- ---------- */

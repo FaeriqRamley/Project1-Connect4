@@ -107,5 +107,6 @@ const gameStatus = {
 
 displayBoard(gameBoard.board);
 
+document.querySelector("body").addEventListener('load',() => document.querySelector("#testModal").focus());
 document.querySelector("#button-game-start").addEventListener("click",startGame);
 document.querySelector("#piece-dropper").addEventListener("click",onClickMakeMove);

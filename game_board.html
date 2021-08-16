@@ -9,7 +9,54 @@
     <title>Connect 4</title>
 </head>
 <body>
-    
+    <!-- Modal for game mode select -->
+    <div class="modal" tabindex="-1" id="game-mode-modal" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Select Game Mode</h5>
+                </div>
+                <div class="modal-body" id="game-mode-options">
+                    <div class="row">
+                        <div class="col" value="hotSeat">
+                            <h6 value="hotSeat" data-bs-dismiss="modal">Hot Seat</h6>
+                        </div>
+                        <div class="col" value="botMatch">
+                            <img src="Assets/Images/dramaturgy-vtuber.gif" width="50%"/>
+                            <h6 data-bs-dismiss="modal">Against Bots</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="bot-level-modal" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Select Bot Level</h5>
+                </div>
+                <div class="modal-body" id="bot-level-options">
+                    <div class="row">
+                        <div class="col" value="2">
+                            <img src="Assets/Images/dramaturgy-vtuber.gif" width="50%"/>
+                            <h6 value="hotSeat" data-bs-dismiss="modal">Easy</h6>
+                        </div>
+                        <div class="col" value="4">
+                            <img src="Assets/Images/dramaturgy-vtuber.gif" width="50%"/>
+                            <h6 data-bs-dismiss="modal">Medium</h6>
+                        </div>
+                        <div class="col" value="6">
+                            <img src="Assets/Images/dramaturgy-vtuber.gif" width="50%"/>
+                            <h6 data-bs-dismiss="modal">Hard</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container" id="game-wrapper">
         <div class="container" id="game-display">
             <div class="row">
@@ -35,14 +82,9 @@
         </div>
         <div id="board-display"></div>
         <div id="user-interface">
-            <button id="button-game-start">Start Game</button>
+            <button id="button-game-start" data-bs-toggle="modal" data-bs-target="#bot-level-modal">Start Game</button>
         </div>
     </div>
-
-
-
-
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script src="Scripts/board_and_bot.js"></script>
     <script src="Scripts/game_board.js"></script>
