@@ -78,4 +78,9 @@
 .modal-body{
     text-align: center;
 }
+
+.modal-body .col{
+    padding:auto 3px;
+    margin:auto 6px;
+}
 /* ---------- -------------- ---------- */

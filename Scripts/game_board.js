@@ -58,6 +58,24 @@ const makeMove = (move,player) => {
     }
 }
 
+//// Click Functions
+
+const onClickUpdateBotLevel = (e) => {
+    if(e.target.tagName !== "IMG"){
+        return null;
+    }
+    console.log(e.target.tagName);
+    gameStatus.botInfo.botLevel = e.target.parentNode.dataset.value;
+    console.log(gameStatus);
+}
+
+const onClickUpdateGameMode = (e) => {
+    if (e.target.tagName !== "IMG"){
+        return null;
+    }
+    gameStatus.mode = e.target.parentNode.dataset.value;
+}
+
 const onClickMakeMove = (e) => {
     if (e.target.tagName !== "BUTTON"){
         return null;
@@ -79,10 +97,8 @@ const onClickMakeMove = (e) => {
             const {botLevel,botNum} = gameStatus.botInfo;
             
             makeMove(move,botNum%2+1);
-            toggleGameButtons(false);
-            medBot(gameBoard,botNum,botNum,botLevel,botLevel);
             if(!gameStatus.gameEnd){
-                toggleGameButtons(true);
+                medBot(gameBoard,botNum,botNum,botLevel,botLevel);
             }
             break;
         default:
@@ -110,3 +126,5 @@ displayBoard(gameBoard.board);
 document.querySelector("body").addEventListener('load',() => document.querySelector("#testModal").focus());
 document.querySelector("#button-game-start").addEventListener("click",startGame);
 document.querySelector("#piece-dropper").addEventListener("click",onClickMakeMove);
+document.querySelector("#game-mode-options").addEventListener("click",onClickUpdateGameMode);
+document.querySelector("#bot-level-options").addEventListener("click",onClickUpdateBotLevel);

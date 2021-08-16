@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link href="CSS/game_board.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    <link href="CSS/game_board.css" rel="stylesheet"/>
     <title>Connect 4</title>
 </head>
 <body>
@@ -18,12 +17,18 @@
                 </div>
                 <div class="modal-body" id="game-mode-options">
                     <div class="row">
-                        <div class="col" value="hotSeat">
-                            <h6 value="hotSeat" data-bs-dismiss="modal">Hot Seat</h6>
+                        <div class="col" data-value="hotSeat">
+                            <img
+                                src="Assets/Images/gawr-gura-amelia-watson.gif" width="80%"
+                                data-bs-dismiss="modal"/>
+                            <h6 >Hot Seat</h6>
                         </div>
-                        <div class="col" value="botMatch">
-                            <img src="Assets/Images/dramaturgy-vtuber.gif" width="50%"/>
-                            <h6 data-bs-dismiss="modal">Against Bots</h6>
+                        <div class="col" data-value="botMatch">
+                            <img
+                                src="Assets/Images/dramaturgy-vtuber.gif" width="80%"
+                                data-bs-target="#bot-level-modal" data-bs-toggle="modal" data-bs-dismiss="modal"
+                            />
+                            <h6 >Against Bots</h6>
                         </div>
                     </div>
                 </div>
@@ -39,17 +44,17 @@
                 </div>
                 <div class="modal-body" id="bot-level-options">
                     <div class="row">
-                        <div class="col" value="2">
-                            <img src="Assets/Images/dramaturgy-vtuber.gif" width="50%"/>
-                            <h6 value="hotSeat" data-bs-dismiss="modal">Easy</h6>
+                        <div class="col" data-value="2">
+                            <img src="Assets/Images/kiara-takanashi.gif" width="80%" data-bs-dismiss="modal"/>
+                            <h6>Easy</h6>
                         </div>
-                        <div class="col" value="4">
-                            <img src="Assets/Images/dramaturgy-vtuber.gif" width="50%"/>
-                            <h6 data-bs-dismiss="modal">Medium</h6>
+                        <div class="col" data-value="4">
+                            <img src="Assets/Images/gawr-gura-gura.gif" width="80%" data-bs-dismiss="modal"/>
+                            <h6>Medium</h6>
                         </div>
-                        <div class="col" value="6">
-                            <img src="Assets/Images/dramaturgy-vtuber.gif" width="50%"/>
-                            <h6 data-bs-dismiss="modal">Hard</h6>
+                        <div class="col" data-value="6">
+                            <img src="Assets/Images/amelia-watson-hololive.gif" width="80%" data-bs-dismiss="modal"/>
+                            <h6>Hard</h6>
                         </div>
                     </div>
                 </div>
@@ -82,11 +87,10 @@
         </div>
         <div id="board-display"></div>
         <div id="user-interface">
-            <button id="button-game-start" data-bs-toggle="modal" data-bs-target="#bot-level-modal">Start Game</button>
+            <button id="button-game-start" data-bs-toggle="modal" data-bs-target="#game-mode-modal">Start Game</button>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <script src="Scripts/board_and_bot.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    <script src="Scripts/board_and_bot.js"></script>
     <script src="Scripts/game_board.js"></script>
 </body>
 </html>
