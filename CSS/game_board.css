@@ -83,4 +83,24 @@
     padding:auto 3px;
     margin:auto 6px;
 }
+
+#hot-seat:hover{
+    content:url("../Assets/Images/Icons/hot_seat_faster.gif");
+}
+
+#bot-match:hover{
+    content:url("../Assets/Images/Icons/against_bots_faster.gif");
+}
+
+#easy-bot:hover{
+    content:url("../Assets/Images/Icons/easy_bot_faster.gif");
+}
+
+#medium-bot:hover{
+    content:url("../Assets/Images/Icons/medium_bot_faster.gif");
+}
+
+#hard-bot:hover{
+    content:url("../Assets/Images/Icons/hard_bot_faster.gif");
+}
 /* ---------- -------------- ---------- */
