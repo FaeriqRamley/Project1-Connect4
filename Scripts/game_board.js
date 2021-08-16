@@ -224,12 +224,11 @@ const onClickMakeMove = (e) => {
     } else if(gameStatus.mode === "ezBot"){
         makeMove(move,gameStatus.turn%2+1);
         if(!gameStatus.gameEnd){
-            easyBot(gameBoard,gameStatus.turn%2+1);
+            // easyBot(gameBoard,gameStatus.turn%2+1);
+            medBot(gameBoard,2,2,0);
         }
         
     }
-
-    
 }
 
 //// Invocations
