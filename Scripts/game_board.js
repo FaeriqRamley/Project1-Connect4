@@ -29,11 +29,10 @@ class Board {
 
     add (col,currPlayer){
         if (this.board[0][col] !== 0){
-            console.log("Column is full. Pick another")
+            // console.log("Column is full. Pick another")
             return false
 
         } else {
-            console.log((`Player ${currPlayer} plays column ${col}`))
             for (let i=1;i<this.board.length;i++){
                 if(this.board[i][col] !== 0){
                     this.board[i-1][col] = currPlayer;
@@ -47,32 +46,32 @@ class Board {
 
     //function to check if this move was played what will happen
     //returns checkWin object
-    checkAdd (col,currPlayer){
+    // checkAdd (col,currPlayer){
 
-        if (this.board[0][col] !== 0){
-            return {result:false,player:0,valid:false}
+    //     if (this.board[0][col] !== 0){
+    //         return {result:false,player:0,valid:false}
 
-        } else {
-            //row where piece was add
-            let rowPlaced = this.board.length-1;
-            for (let i=1;i<this.board.length;i++){
-                if(this.board[i][col] !== 0){
-                    this.board[i-1][col] = currPlayer;
-                    rowPlaced = i-1;
-                    break;
-                }
-            }
-            if (this.board[this.board.length-1][col] === 0){
-                this.board[this.board.length-1][col] = currPlayer;
-            }
+    //     } else {
+    //         //row where piece was add
+    //         let rowPlaced = this.board.length-1;
+    //         for (let i=1;i<this.board.length;i++){
+    //             if(this.board[i][col] !== 0){
+    //                 this.board[i-1][col] = currPlayer;
+    //                 rowPlaced = i-1;
+    //                 break;
+    //             }
+    //         }
+    //         if (this.board[this.board.length-1][col] === 0){
+    //             this.board[this.board.length-1][col] = currPlayer;
+    //         }
 
-            const outcome = this.checkWin();
-            this.board[rowPlaced][col] = 0;
-            outcome["valid"] = true;
+    //         const outcome = this.checkWin();
+    //         this.board[rowPlaced][col] = 0;
+    //         outcome["valid"] = true;
 
-            return outcome;
-        }
-    }
+    //         return outcome;
+    //     }
+    // }
 
     checkWin(){
         const boardCols = this.board[0].length;
@@ -120,7 +119,7 @@ class Board {
                     this.board[row+1][col+1] === this.board[row+2][col+2] &&
                     this.board[row+2][col+2] === this.board[row+3][col+3]
                 ){
-                    console.log(this.board[row][col],this.board[row+1][col+1],this.board[row+2][col+2],this.board[row+3][col+3])
+                    // console.log(this.board[row][col],this.board[row+1][col+1],this.board[row+2][col+2],this.board[row+3][col+3])
                     return {
                         result: true,
                         player: this.board[row][col]
@@ -138,7 +137,7 @@ class Board {
                     this.board[row+1][col-1] === this.board[row+2][col-2] &&
                     this.board[row+2][col-2] === this.board[row+3][col-3]
                 ){
-                    console.log(this.board[row][col],this.board[row+1][col-1],this.board[row+2][col-2],this.board[row+3][col-3])
+                    // console.log(this.board[row][col],this.board[row+1][col-1],this.board[row+2][col-2],this.board[row+3][col-3])
                     return {
                         result: true,
                         player: this.board[row][col]
@@ -225,7 +224,7 @@ const onClickMakeMove = (e) => {
         makeMove(move,gameStatus.turn%2+1);
         if(!gameStatus.gameEnd){
             // easyBot(gameBoard,gameStatus.turn%2+1);
-            medBot(gameBoard,2,2,0);
+            medBot(gameBoard,2,2,6,6);
         }
         
     }

@@ -69,7 +69,7 @@ const medBot = (prevBoard,botPlayerNum,currPlayer,highestDepth,depth) => {
             boardOutcomes.push(0);
         }
     }
-    console.log(boardOutcomes);
+    // console.log(boardOutcomes);
 
     //Check result of all moves
     for ( const board of boardOutcomes ){
@@ -116,7 +116,7 @@ const medBot = (prevBoard,botPlayerNum,currPlayer,highestDepth,depth) => {
 
         const highestValueMoveList = [];
         for (let ind=0;ind<moveValues.length;ind++){
-            if(moveValues[i] === preferredValue){
+            if(moveValues[ind] === preferredValue){
                 highestValueMoveList.push(ind);
             }
         }
