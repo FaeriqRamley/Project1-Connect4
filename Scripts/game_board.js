@@ -65,7 +65,7 @@ const onClickUpdateBotLevel = (e) => {
         return null;
     }
     console.log(e.target.tagName);
-    gameStatus.botInfo.botLevel = e.target.parentNode.dataset.value;
+    gameStatus.botInfo.botLevel = parseInt(e.target.parentNode.dataset.value);
     console.log(gameStatus);
 }
 
