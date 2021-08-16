@@ -13,8 +13,18 @@ class Board {
         this.board = board;
     }
 
-    returnBoard () {
-        return this.board;
+    copyBoard () {
+        let duplicate = [];
+
+        for (let row of this.board){
+            const duplicateRow = [];
+            for(let col of row){
+                duplicateRow.push(col);
+            }
+            duplicate.push(duplicateRow);
+        }
+        
+        return duplicate;
     }
 
     add (col,currPlayer){
