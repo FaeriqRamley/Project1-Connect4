@@ -1,5 +1,7 @@
 'use strict';
 
+//// Game Functions
+
 const displayBoard = (board) => {
     const displayGrid = document.querySelector("#board-display")
     for (let row = 0; row<board.length;row++){
@@ -14,11 +16,11 @@ const displayBoard = (board) => {
     }
 }
 
-//// Game Functions
 const startGame = () => {
     gameBoard = new Board();
     displayBoard(gameBoard.board);
     gameStatus.turn = 0;
+    gameStatus.gameEnd = false;
     toggleGameButtons(true);
     updateTurnStatus();
 }
@@ -41,7 +43,7 @@ const toggleGameButtons = (toggle) => {
 }
 
 const makeMove = (move,player) => {
-    madeValidMove = gameBoard.add(parseInt(move),player)
+    let madeValidMove = gameBoard.add(parseInt(move),player)
     
     if (madeValidMove){
         displayBoard(gameBoard.board);
@@ -69,22 +71,39 @@ const onClickMakeMove = (e) => {
 
     const move = e.target.value;
     
-    if(gameStatus.mode === "hotSeat"){
-        makeMove(move,gameStatus.turn%2+1);
-    } else if(gameStatus.mode === "ezBot"){
-        makeMove(move,gameStatus.turn%2+1);
-        if(!gameStatus.gameEnd){
-            // easyBot(gameBoard,gameStatus.turn%2+1);
-            medBot(gameBoard,2,2,6,6);
-        }
-        
+    switch(gameStatus.mode){
+        case "hotSeat":
+            makeMove(move,gameStatus.turn%2+1);
+            break;
+        case "botMatch":
+            const {botLevel,botNum} = gameStatus.botInfo;
+            
+            makeMove(move,botNum%2+1);
+            toggleGameButtons(false);
+            medBot(gameBoard,botNum,botNum,botLevel,botLevel);
+            if(!gameStatus.gameEnd){
+                toggleGameButtons(true);
+            }
+            break;
+        default:
+            break;
     }
+
 }
 
 //// Invocations
 let gameBoard = new Board();
 // **change gameMode value to variable later
-const gameStatus = {gameEnd: false, winner:0, turn:0, mode:"ezBot"};
+const gameStatus = {
+    gameEnd: false,
+    winner:0,
+    turn:0,
+    mode:"botMatch",
+    botInfo: {
+        botLevel: 6,
+        botNum: 2,
+    }
+};
 
 displayBoard(gameBoard.board);
 
