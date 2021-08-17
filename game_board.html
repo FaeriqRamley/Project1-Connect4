@@ -75,6 +75,51 @@
     </div>
 
     <!-- Game Interface -->
+    <div id="page-wrapper">
+        <div class="row" id="game-wrapper">
+            <div class="col-xl-4" id="player-1-col">
+                Player 1 Stats
+            </div>
+            <div class="col-xl-4" id="game-col">
+                <div class="row" id="game-row">
+                    <div class="col" id="display-player-turn">
+                        <h4>Player Turn</h4>
+                        <h4>0</h4>
+                    </div>
+                    <div class="col" id="display-turn-number">
+                        <h4>Turn Number</h4>
+                        <h4>0</h4>
+                    </div>
+                </div>
+                <div class="row" id="board-row">
+                    <div id="piece-dropper">
+                        <button value="0"></button>
+                        <button value="1"></button>
+                        <button value="2"></button>
+                        <button value="3"></button>
+                        <button value="4"></button>
+                        <button value="5"></button>
+                        <button value="6"></button>
+                        <button value="7"></button>
+                    </div>
+                    <div id="board-display"></div>
+                </div>
+                <div class="row" id="options-row">
+                    <div class="col" id="game-options">
+                        <button id="button-game-start" data-bs-toggle="modal" data-bs-target="#game-mode-modal">Start Game</button>
+                    </div>
+                    <div class="col" id="piece-box">
+                        piece box goes here
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xl-4" id="player-2-col">
+                Player 2 page
+            </div>
+        </div>
+    </div>
+    <!-- <br>
     <div class="container" id="game-wrapper">
         <div class="container" id="game-display">
             <div class="row">
@@ -102,8 +147,9 @@
         <div id="user-interface">
             <button id="button-game-start" data-bs-toggle="modal" data-bs-target="#game-mode-modal">Start Game</button>
         </div>
-    </div>
+    </div> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="Scripts/local_storage.js"></script>
     <script src="Scripts/board_and_bot.js"></script>
     <script src="Scripts/game_board.js"></script>
 </body>

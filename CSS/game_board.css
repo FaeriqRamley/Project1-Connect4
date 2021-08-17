@@ -1,13 +1,41 @@
-.container {
-    border: 1px solid black;
+body{
+    background-image: url("../Assets/Images/Backgrounds/game_board_bg.jpg");
+    background-position: center;
+    background-size: cover;
 }
 
 #game-wrapper {
-    display: block;
+    text-align: center;
+    background-color: rgba(255,255,255,0.7);
+    border:8px solid rgb(61 40 4);
+}
+
+#page-wrapper {
+    height: 100vh;
+    width:96vw;
+    margin: auto;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    
+}
+
+#page-wrapper .col{
     text-align: center;
 }
 
-
+#page-wrapper .col-xl-4{
+}
+#page-wrapper #game-col{
+    min-width:420px;
+}
+#page-wrapper #player-1-col{
+    min-width:420px;
+}
+#page-wrapper #player-2-col{
+    min-width:420px;
+}
 /* ---------- Game Display ---------- */
 #game-display {
     color: black;
@@ -21,6 +49,7 @@
     height: 50px;
     display: grid;
     grid-template-columns: repeat(8,1fr);
+    padding:0px;
 }
 
 #piece-dropper button {

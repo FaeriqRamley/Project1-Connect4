@@ -29,7 +29,7 @@ const updateWidgetInfo = () => {
     userNameDiv.append(playerName);
 
     const playerCoins = document.createElement("div");
-    playerCoins.innerText = `${currentProfile.userCoins} coins`
+    playerCoins.innerText = `${currentProfile.userCoins} coins`;
     coinsDiv.append(playerCoins);
 
     const playerStats = document.createElement("div");
