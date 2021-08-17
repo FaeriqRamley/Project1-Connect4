@@ -37,4 +37,5 @@ const onClickEnterUser = (e) => {
         
 }
 
+gameStorage,currentProfile = initLocalStorage();
 document.querySelector("#submit-buttons").addEventListener("click",onClickEnterUser);
