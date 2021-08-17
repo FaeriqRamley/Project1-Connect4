@@ -10,7 +10,6 @@ const onClickEnterUser = (e) => {
         return null;
     }
 
-    console.log(userName);
     // window.location.assign("main_page.html");
 
     if(e.target.innerText === "Log In"){
@@ -28,7 +27,8 @@ const onClickEnterUser = (e) => {
         if(gameStorage.getItem(userName)===null){
             copyProfile(currentProfile,profileStructure);
             currentProfile.userName = userName;
-            gameStorage.setItem(userName,JSON.stringify(currentProfile));
+            gameStorage.setItem(userName,JSON.stringify(currentProfile))
+            window.location.assign("main_page.html");
         } else{
             console.log("User already exists. Click log in to play!")
         }

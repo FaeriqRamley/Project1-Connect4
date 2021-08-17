@@ -18,4 +18,18 @@ const onClickChangePage = (e) => {
     
 }
 
+const updateWidgetInfo = () => {
+    const userNameDiv = document.querySelector("#widget-name");
+    const coinsDiv = document.querySelector("#widget-coins");
+    const statsDiv = document.querySelector("#widget-stats");
+
+    const playerName = document.createElement("div");
+    playerName.innerText = currentPlayer.userName;
+    userNameDiv.append(playerName);
+    console.log("updating widget");
+
+
+}
+
+updateWidgetInfo();
 document.querySelector(".wrapper").addEventListener("click",onClickChangePage);

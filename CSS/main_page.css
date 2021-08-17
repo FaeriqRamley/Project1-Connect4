@@ -15,7 +15,7 @@ body {
     background-image: url("../Assets/Images/Backgrounds/main_page_bg.png");
 }
 
-.wrapper div{
+.wrapper .nav-option{
     position:relative;
     font-size: 0px;
     font-weight:bold;
@@ -30,7 +30,7 @@ body {
     width:100%;
 }
 
-.wrapper div:hover {
+.wrapper .nav-option:hover {
     font-size:30px;
     cursor: pointer;
 }
@@ -61,4 +61,65 @@ body {
     grid-column-end: 33;
     grid-row-start:13;
     grid-row-end:18;
+}
+
+.player-widget {
+    grid-column-start: 2;
+    grid-column-end: 8;
+    grid-row-start: 2;
+    grid-row-end: 5;
+    position:relative;
+    right:30px;
+    bottom:30px;
+    border: 5px solid rgb(47, 7, 7);
+    background-color: rgba(255, 255, 255,0.75);
+    display:grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: repeat(3,1fr);
+}
+
+.player-widget div{
+    border:0px solid black;
+}
+
+.player-widget #widget-image{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+
+    position: relative;
+    left:2px;
+    top:2px;
+
+    background-image: url("../Assets/Images/Avatars/Sample_Avatar.png");
+    background-size: contain;
+    border:2px solid black;
+    border-radius: 0.2rem;
+
+
+}
+
+.player-widget .widget-info{
+    position:relative;
+    right: 30px;
+}
+.player-widget #widget-name{
+    grid-column-start: 4;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.player-widget #widget-coins{
+    grid-column-start: 4;
+    grid-column-end: 7;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+.player-widget #widget-stats{
+    grid-column-start: 4;
+    grid-column-end: 7;
+    grid-row-start: 3;
+    grid-row-end: 4;
 }
