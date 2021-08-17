@@ -50,10 +50,3 @@ const copyProfile = (newProfile,oldProfile) => {
 const saveProfile = () => {
     gameStorage.setItem(currentProfile.userName,JSON.stringify(currentProfile))
 }
-
-const initLocalStorage = () => {
-    const gameStorage = window.localStorage;
-    const currentProfile = {};
-    copyProfile(currentProfile,profileStructure);
-    return gameStorage,currentProfile;
-}
