@@ -59,12 +59,10 @@ const makeMove = (move,player) => {
 }
 
 //// Click Functions
-
 const onClickUpdateBotLevel = (e) => {
     if(e.target.tagName !== "IMG"){
         return null;
     }
-    console.log(e.target.tagName);
     gameStatus.botInfo.botLevel = parseInt(e.target.parentNode.dataset.value);
     console.log(gameStatus);
 }

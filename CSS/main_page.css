@@ -1,3 +1,64 @@
 body {
-    background-color: aliceblue;
+    background-color:rgb(44, 94, 156);
+}
+
+.wrapper {
+    display:grid;
+    grid-template-columns: repeat(38,1fr);
+    grid-template-rows: repeat(20,1fr);
+
+    border: 10px ridge rgb(47, 7, 7);
+    border-radius:0.3rem;
+    margin: auto;
+    width: 1920px;
+    height: 1080px;
+    background-image: url("../Assets/Images/Backgrounds/main_page_bg.png");
+}
+
+.wrapper div{
+    position:relative;
+    font-size: 0px;
+    font-weight:bold;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: white;
+}
+
+.wrapper span{
+    text-align: center;
+    position:absolute;
+    bottom:0px;
+    width:100%;
+}
+
+.wrapper div:hover {
+    font-size:30px;
+    cursor: pointer;
+}
+
+#select-store{
+    grid-column-start:11;
+    grid-column-end: 14;
+    grid-row-start:5;
+    grid-row-end:8;
+}
+
+#select-profile{
+    grid-column-start:24;
+    grid-column-end: 29;
+    grid-row-start:5;
+    grid-row-end:8;
+}
+
+#select-game{
+    grid-column-start:8;
+    grid-column-end: 11;
+    grid-row-start:17;
+    grid-row-end:20;
+}
+
+#select-logout{
+    grid-column-start:27;
+    grid-column-end: 33;
+    grid-row-start:13;
+    grid-row-end:18;
 }
