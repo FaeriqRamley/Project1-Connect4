@@ -1,0 +1,45 @@
+body{
+    background-color: rgb(44, 94, 156);
+    text-align:center;
+    
+}
+
+.wrapper{
+    margin:auto;
+    width:69%;
+    height: 100vh;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.wrapper div{
+    width:100%;
+}
+.wrapper h1{
+    font-size:15vw;
+}
+
+.wrapper form{
+    font-size:4vw;
+    display:block;
+}
+
+form input{
+    color: white;
+    caret-color: rgba(0,0,0,0);
+    text-align: center;
+    background: none;
+    border:none;
+}
+
+form input:focus{
+    outline:none;
+}
+form input:focus::placeholder{
+    color:whitesmoke;
+}
+
+.btn{
+    font-size:2vw;
+}
