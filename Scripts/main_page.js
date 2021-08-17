@@ -1,7 +1,8 @@
 "use strict";
 
+const currentProfile = getActiveAccount();
+
 const onClickChangePage = (e) => {
-    console.log(e.target.tagName);
     if(e.target.className !== "nav-option" && e.target.parentNode.className !== "nav-option"){
         return null;
     };
@@ -12,23 +13,30 @@ const onClickChangePage = (e) => {
     } else {
         target = e.target.dataset.value;
     }
-    
     window.location.assign(target);
 
-    
 }
 
 const updateWidgetInfo = () => {
     const userNameDiv = document.querySelector("#widget-name");
     const coinsDiv = document.querySelector("#widget-coins");
     const statsDiv = document.querySelector("#widget-stats");
-
-    const playerName = document.createElement("div");
-    playerName.innerText = currentPlayer.userName;
-    userNameDiv.append(playerName);
+    
     console.log("updating widget");
 
+    const playerName = document.createElement("div");
+    playerName.innerText = currentProfile.userName;
+    userNameDiv.append(playerName);
 
+    const playerCoins = document.createElement("div");
+    playerCoins.innerText = `${currentProfile.userCoins} coins`
+    coinsDiv.append(playerCoins);
+
+    const playerStats = document.createElement("div");
+    playerStats.innerText = `${currentProfile.userWins}W - ${currentProfile.userLoss}L - ${currentProfile.userDraw}D`
+    statsDiv.append(playerStats);
+
+    
 }
 
 updateWidgetInfo();

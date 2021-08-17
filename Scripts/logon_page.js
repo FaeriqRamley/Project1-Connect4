@@ -18,6 +18,7 @@ const onClickEnterUser = (e) => {
         } else{
             const retrievedProfile = JSON.parse(gameStorage.getItem(userName));
             copyProfile(currentProfile,retrievedProfile);
+            gameStorage.setItem("Active User",userName);
             window.location.assign("main_page.html");
         };
 
@@ -27,17 +28,15 @@ const onClickEnterUser = (e) => {
         if(gameStorage.getItem(userName)===null){
             copyProfile(currentProfile,profileStructure);
             currentProfile.userName = userName;
-            gameStorage.setItem(userName,JSON.stringify(currentProfile))
+            gameStorage.setItem(userName,JSON.stringify(currentProfile));
+            gameStorage.setItem("Active User",userName);
             window.location.assign("main_page.html");
         } else{
-            console.log("User already exists. Click log in to play!")
+            console.log("User already exists. Click log in to play!");
         }
-
     }
-        
 }
 
-let gameStorage = window.localStorage;
 let currentProfile = {};
 copyProfile(currentProfile,profileStructure);
 
