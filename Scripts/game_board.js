@@ -2,7 +2,7 @@
 
 const currentProfile = getActiveAccount();
 
-//// Game Functions
+//// -------------------- Game Functions --------------------
 
 const displayBoard = (board) => {
     const displayGrid = document.querySelector("#board-display")
@@ -16,15 +16,6 @@ const displayBoard = (board) => {
             displayGrid.append(gamePiece);
         }
     }
-}
-
-const startGame = () => {
-    gameBoard = new Board();
-    displayBoard(gameBoard.board);
-    gameStatus.turn = 0;
-    gameStatus.gameEnd = false;
-    toggleGameButtons(true);
-    updateTurnStatus();
 }
 
 const updateTurnStatus = (turnChange=0) => {
@@ -44,6 +35,14 @@ const toggleGameButtons = (toggle) => {
     }
 }
 
+const gameEndEvent = () => {
+    console.log("game ends")
+    if (gameStatus.mode === "botMatch"){
+        console.log("botmatch ended");
+    }
+    
+}
+
 const makeMove = (move,player) => {
     let madeValidMove = gameBoard.add(parseInt(move),player)
     
@@ -61,7 +60,6 @@ const makeMove = (move,player) => {
 }
 
 const generateBotLayout = (botName) => {
-    
     const player2Avatar = document.createElement("img")
     player2Avatar.className = "avatar-img";
     player2Avatar.id = "player-2-avatar";
@@ -101,7 +99,24 @@ const generatePlayerLayout = () => {
     document.querySelector("#player-1-col").append(player1Name);
 }
 
-//// Click Functions
+const clearLayouts = () => {
+    document.querySelector("#player-1-col").innerHTML = "";
+    document.querySelector("#player-2-col").innerHTML = "";
+}
+
+////  -------------------- Click Functions --------------------
+
+const onClickStartGame = () => {
+    gameBoard = new Board();
+    displayBoard(gameBoard.board);
+    gameStatus.turn = 0;
+    gameStatus.gameEnd = false;
+    toggleGameButtons(true);
+    updateTurnStatus();
+    clearLayouts();
+}
+
+
 const onClickUpdateBotLevel = (e) => {
     if(e.target.tagName !== "IMG"){
         return null;
@@ -166,7 +181,7 @@ const gameStatus = {
 
 displayBoard(gameBoard.board);
 document.querySelector("body").addEventListener('load',() => document.querySelector("#testModal").focus());
-document.querySelector("#button-game-start").addEventListener("click",startGame);
+document.querySelector("#button-game-start").addEventListener("click",onClickStartGame);
 document.querySelector("#piece-dropper").addEventListener("click",onClickMakeMove);
 document.querySelector("#game-mode-options").addEventListener("click",onClickUpdateGameMode);
 document.querySelector("#bot-level-options").addEventListener("click",onClickUpdateBotLevel);

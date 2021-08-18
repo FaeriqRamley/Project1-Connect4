@@ -160,7 +160,7 @@ const medBot = (prevBoard,botPlayerNum,currPlayer,highestDepth,depth) => {
     //Check result of all moves
     for ( const board of boardOutcomes ){
         if (board === 0){
-            moveValues.push(0);
+            moveValues.push(highestDepth+100);
         } else {
             const outcome = board.checkWin();
             if (outcome.result === false ){
@@ -190,17 +190,24 @@ const medBot = (prevBoard,botPlayerNum,currPlayer,highestDepth,depth) => {
 
     //Determine max/min value preferred by currPlayer
     //if function returns NaN, then there is an error
-    if(depth===highestDepth){
-        console.log(`At depth ${depth}`)
-        console.log(moveValues);
-    }
+    // if(depth===highestDepth){
+    //     console.log(`At depth ${depth}`)
+    //     console.log(moveValues);
+    // }
     let preferredValue = NaN;
     if (currPlayer === botPlayerNum){
+        //Convert invalid moves to a large negative so it will nvr be chosen
+        for (let ind=0;ind<moveValues.length;ind++){
+            if (moveValues[ind] === highestDepth+100){
+                moveValues[ind] = -(highestDepth+100);
+            }
+        }
         preferredValue = Math.max(...moveValues);
+
     } else {
         preferredValue = Math.min(...moveValues)
     }
-
+    
     //If depth is at highest level
     if (depth === highestDepth){
 
@@ -214,13 +221,9 @@ const medBot = (prevBoard,botPlayerNum,currPlayer,highestDepth,depth) => {
         //Test if move is valid
         let randomChoice = 0;
         let chosenMove = 0;
-        let moveIsValid = false;
-        while(moveIsValid===false){
-            const testBoard = new Board(prevBoard.copyBoard());
-            randomChoice = Math.floor(Math.random()*highestValueMoveList.length);
-            chosenMove = highestValueMoveList[randomChoice];
-            moveIsValid = testBoard.add(chosenMove,botPlayerNum);
-        }
+        const testBoard = new Board(prevBoard.copyBoard());
+        randomChoice = Math.floor(Math.random()*highestValueMoveList.length);
+        chosenMove = highestValueMoveList[randomChoice];
         
         makeMove(chosenMove,botPlayerNum);
         return chosenMove;
