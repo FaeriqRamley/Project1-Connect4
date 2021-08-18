@@ -169,3 +169,43 @@ body{
     content:url("../Assets/Images/Icons/hard_bot_faster.gif");
 }
 /* ---------- -------------- ---------- */
+
+
+/* ---------- Outcome Screen ---------- */
+#outcome-screen{
+    position:fixed;
+    background-color:rgba(0,0,0,0.75);
+    width:100vw;
+    height:100vh;
+    display:none;
+    justify-content:center;
+    text-align: center;
+    flex-direction:column;
+}
+
+#outcome-popup{
+    background-color: bisque;
+    border: 3px solid rgb(61 40 4);
+    margin:auto;
+    width:50%;
+    min-width:350px;
+    color:black;
+}
+
+#outcome-message{
+    margin:5px;
+}
+
+#outcome-buttons{
+    margin:10px;
+}
+
+#outcome-buttons button{
+    width:50%;
+    min-width:60px;
+    max-width:130px;
+}
+/* ---------- -------------- ---------- */
+
+
+
