@@ -52,6 +52,35 @@ body{
 #piece-dropper button {
     background: transparent;
 }
+
+#piece-dropper-2 {
+    margin: auto;
+    width: 400px;
+    height: 50px;
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    padding:0px;
+}
+
+#piece-dropper-2 button {
+    background: transparent;
+}
+
+#piece-box {
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+}
+#draggable-piece {
+    width:32px;
+    height:32px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: green;
+    border: 1px solid black;
+    margin:auto;
+}
+
 /* ---------- ------------- ---------- */
 
 

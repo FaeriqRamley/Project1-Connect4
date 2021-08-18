@@ -91,7 +91,7 @@ const gameEndEvent = (gameWinner) => {
         default:
             break;
     }
-    
+
     outcomeMessageDiv.append(outcomeMessage);
     outcomeScreen.style.display = "flex";
 }
@@ -231,9 +231,11 @@ const onClickBackHomeOrAgain = (e) => {
     }
 }
 
+////  -------------------- Click Functions --------------------
+
+
 //// Invocations
 let gameBoard = new Board();
-// **change gameMode value to variable later
 const gameStatus = {
     gameEnd: false,
     winner:0,
