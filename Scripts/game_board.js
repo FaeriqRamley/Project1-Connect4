@@ -231,8 +231,37 @@ const onClickBackHomeOrAgain = (e) => {
     }
 }
 
-////  -------------------- Click Functions --------------------
+////  -------------------- Drag and drop --------------------
+const draggablePiece = document.querySelector("#draggable-piece");
+draggablePiece.addEventListener("dragstart", e=> {
+    e.dataTransfer.setData("text/plain",draggablePiece.id);
+});
 
+for (const dropZone of document.querySelectorAll(".drop-zone")){
+    dropZone.addEventListener("dragover", e=> {
+        //needed to work since dragover invoked every few miliseconds
+        e.preventDefault();
+        dropZone.classList.add("drop-zone-over");
+    });
+
+    dropZone.addEventListener("drop", e=> {
+        e.preventDefault();
+
+        const droppedElementId = e.dataTransfer.getData("text/plain");
+        if(droppedElementId === "draggable-piece"){
+            console.log(e.target.dataset.value);
+        };
+
+        dropZone.classList.remove("drop-zone-over");
+        
+    });
+
+    dropZone.addEventListener("dragleave", e => {
+        e.preventDefault();
+        dropZone.classList.remove("drop-zone-over");
+    })
+    
+}
 
 //// Invocations
 let gameBoard = new Board();

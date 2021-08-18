@@ -55,22 +55,30 @@ body{
 
 #piece-dropper-2 {
     margin: auto;
-    width: 400px;
+    width: 370px;
     height: 50px;
     display: grid;
     grid-template-columns: repeat(8,1fr);
     padding:0px;
 }
 
-#piece-dropper-2 button {
-    background: transparent;
+#piece-dropper-2 .drop-zone {
+    display:inline;
+    width:1fr;
+    border:1px solid black;
+}
+
+.drop-zone-over {
+    background-color:red;
 }
 
 #piece-box {
+    width:100%;
     display:flex;
     justify-content:center;
     flex-direction:column;
 }
+
 #draggable-piece {
     width:32px;
     height:32px;
