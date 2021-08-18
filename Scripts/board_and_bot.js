@@ -190,10 +190,7 @@ const medBot = (prevBoard,botPlayerNum,currPlayer,highestDepth,depth) => {
 
     //Determine max/min value preferred by currPlayer
     //if function returns NaN, then there is an error
-    // if(depth===highestDepth){
-    //     console.log(`At depth ${depth}`)
-    //     console.log(moveValues);
-    // }
+
     let preferredValue = NaN;
     if (currPlayer === botPlayerNum){
         //Convert invalid moves to a large negative so it will nvr be chosen
@@ -208,6 +205,11 @@ const medBot = (prevBoard,botPlayerNum,currPlayer,highestDepth,depth) => {
         preferredValue = Math.min(...moveValues)
     }
     
+    if(depth===highestDepth){
+        console.log(`At depth ${depth}`)
+        console.log(moveValues);
+    }
+
     //If depth is at highest level
     if (depth === highestDepth){
 

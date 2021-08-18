@@ -35,12 +35,64 @@ const toggleGameButtons = (toggle) => {
     }
 }
 
-const gameEndEvent = () => {
-    console.log("game ends")
-    if (gameStatus.mode === "botMatch"){
-        console.log("botmatch ended");
+const gameEndEvent = (gameWinner) => {
+    gameStatus.winner = gameWinner;
+    gameStatus.gameEnd = true;
+    const outcomeScreen = document.querySelector("#outcome-screen");
+    const outcomeMessageDiv = document.querySelector("#outcome-message");
+    const outcomeMessage = document.createElement("h1");
+    let botName = ""
+
+    //Choose name of bot
+    switch(gameStatus.botInfo.botNum.toString()){
+        case "2":
+            botName = "Kiara";
+            break;
+        case "4":
+            botName = "Gura";
+            break;
+        case "6":
+            botName = "Amelia";
+            break;
+        default:
+            botName = "Bot";
+            break;
     }
-    
+
+    switch(gameStatus.mode){
+        case "botMatch":
+            gameStatus.winner = gameWinner;
+            //update outcome message
+            if(gameStatus.winner === gameStatus.botInfo.botNum){
+                outcomeMessage.innerText = `You Lost to ${botName}!`;
+            } else {
+                outcomeMessage.innerText = `You Beat ${botName}!`;
+            }
+
+            //update currentProfile
+            if(gameWinner === gameStatus.botInfo.botNum){
+                currentProfile.userLoss += 1;
+                currentProfile.userMatchOutcome.push(-1)
+            } else if (gameWinner === 0){
+                currentProfile.userDraw += 1;
+                currentProfile.userMatchOutcome.push(0)
+            } else {
+                currentProfile.userWins += 1;
+                currentProfile.userMatchOutcome.push(1)
+            }
+
+            currentProfile.userMatchHistory.push(gameBoard.copyBoard())
+            saveProfile(currentProfile);
+            break;
+        case "hotSeat":
+            outcomeMessage.innerText = `Player ${gameWinner} won!`
+            break;
+        default:
+            break;
+    }
+
+    outcomeMessageDiv.append(outcomeMessage);
+    outcomeScreen.style.display = "flex";
 }
 
 const makeMove = (move,player) => {
@@ -50,8 +102,7 @@ const makeMove = (move,player) => {
         displayBoard(gameBoard.board);
         const outcome = gameBoard.checkWin();
         if (outcome.result){
-            console.log(`Player ${outcome.player} wins!`)
-            gameStatus.gameEnd = true;
+            gameEndEvent(outcome.player);
             toggleGameButtons(false);
         } else {
             updateTurnStatus(1);

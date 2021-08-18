@@ -47,8 +47,8 @@ const copyProfile = (newProfile,oldProfile) => {
     }
 }
 
-const saveProfile = () => {
-    gameStorage.setItem(currentProfile.userName,JSON.stringify(currentProfile))
+const saveProfile = (savedProfile) => {
+    gameStorage.setItem(savedProfile.userName,JSON.stringify(savedProfile))
 }
 
 const getActiveAccount = () => {
