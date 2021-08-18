@@ -49,6 +49,22 @@ class Board {
     checkWin(){
         const boardCols = this.board[0].length;
         const boardRows = this.board.length;
+        
+        //Draw Check
+        let boardFull = true;
+        for (const col of this.board[0]){
+            if(col === 0){
+                boardFull = false;
+            }
+        }
+
+        if(boardFull === true){
+            return {
+                result: true,
+                player: 0
+            }
+        }
+
 
         //Row Victory Check
         for (const row of this.board){
