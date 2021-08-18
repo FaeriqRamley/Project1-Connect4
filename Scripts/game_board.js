@@ -44,7 +44,8 @@ const gameEndEvent = (gameWinner) => {
     let botName = ""
 
     //Choose name of bot
-    switch(gameStatus.botInfo.botNum.toString()){
+    console.log(gameStatus.botInfo.botLevel);
+    switch(gameStatus.botInfo.botLevel.toString()){
         case "2":
             botName = "Kiara";
             break;
@@ -72,13 +73,13 @@ const gameEndEvent = (gameWinner) => {
             //update currentProfile
             if(gameWinner === gameStatus.botInfo.botNum){
                 currentProfile.userLoss += 1;
-                currentProfile.userMatchOutcome.push(-1)
+                currentProfile.userMatchOutcome.push(-1*gameStatus.botInfo.botLevel)
             } else if (gameWinner === 0){
                 currentProfile.userDraw += 1;
-                currentProfile.userMatchOutcome.push(0)
+                currentProfile.userMatchOutcome.push(10*gameStatus.botInfo.botLevel)
             } else {
                 currentProfile.userWins += 1;
-                currentProfile.userMatchOutcome.push(1)
+                currentProfile.userMatchOutcome.push(1*gameStatus.botInfo.botLevel)
             }
 
             currentProfile.userMatchHistory.push(gameBoard.copyBoard())
@@ -90,7 +91,7 @@ const gameEndEvent = (gameWinner) => {
         default:
             break;
     }
-
+    
     outcomeMessageDiv.append(outcomeMessage);
     outcomeScreen.style.display = "flex";
 }
@@ -167,7 +168,6 @@ const onClickStartGame = () => {
     clearLayouts();
 }
 
-
 const onClickUpdateBotLevel = (e) => {
     if(e.target.tagName !== "IMG"){
         return null;
@@ -216,6 +216,21 @@ const onClickMakeMove = (e) => {
 
 }
 
+const onClickBackHomeOrAgain = (e) => {
+    console.log("clicked");
+    console.log(e.target.value);
+    if (e.target.tagName !== "BUTTON"){
+        console.log("null")
+        return null;
+    }
+
+    if (e.target.value === "Home"){
+        window.location.assign("main_page.html");
+    } else if (e.target.value === "Again"){
+        document.querySelector("#outcome-screen").style.display = "none";
+    }
+}
+
 //// Invocations
 let gameBoard = new Board();
 // **change gameMode value to variable later
@@ -231,7 +246,8 @@ const gameStatus = {
 };
 
 displayBoard(gameBoard.board);
-document.querySelector("body").addEventListener('load',() => document.querySelector("#testModal").focus());
+document.querySelector("#outcome-buttons").addEventListener("click",onClickBackHomeOrAgain);
+// document.querySelector("body").addEventListener('load',() => document.querySelector("#testModal").focus());
 document.querySelector("#button-game-start").addEventListener("click",onClickStartGame);
 document.querySelector("#piece-dropper").addEventListener("click",onClickMakeMove);
 document.querySelector("#game-mode-options").addEventListener("click",onClickUpdateGameMode);
