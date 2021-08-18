@@ -26,6 +26,14 @@ const updateTurnStatus = (turnChange=0) => {
     gameTurnDisplay.children[1].innerText = `${gameStatus.turn}`;
     playerTurnDisplay.children[1].innerText = `${gameStatus.turn%2+1}`;
 
+    //change color of draggable piece
+    let draggablePiece = document.querySelector("#draggable-piece");
+    if(gameStatus.turn%2+1 === 1){
+        draggablePiece.style.backgroundColor = "red";
+    } else if (gameStatus.turn%2+1 === 2){
+        draggablePiece.style.backgroundColor = "yellow";
+    }
+
 }
 
 const toggleGameButtons = (toggle) => {
@@ -44,7 +52,6 @@ const gameEndEvent = (gameWinner) => {
     let botName = ""
 
     //Choose name of bot
-    console.log(gameStatus.botInfo.botLevel);
     switch(gameStatus.botInfo.botLevel.toString()){
         case "2":
             botName = "Kiara";
@@ -207,7 +214,7 @@ const onClickMakeMove = (e) => {
             
             makeMove(move,botNum%2+1);
             if(!gameStatus.gameEnd){
-                medBot(gameBoard,botNum,botNum,botLevel,botLevel);
+                minmaxBot(gameBoard,botNum,botNum,botLevel,botLevel);
             }
             break;
         default:
@@ -231,6 +238,23 @@ const onClickBackHomeOrAgain = (e) => {
     }
 }
 
+const onClickToggleDragOrClick = () => {
+    const pieceDropperDiv = document.querySelector("#piece-dropper");
+    const pieceClickerDiv = document.querySelector("#piece-clicker");
+    const pieceDropperObj = document.querySelector("#draggable-piece");
+
+    const isDropper = pieceDropperDiv.style.display;
+    if (isDropper === "none"){
+        pieceDropperDiv.style.display = "grid";
+        pieceDropperObj.style.display = "block";
+        pieceClickerDiv.style.display = "none";
+    } else {
+        pieceDropperDiv.style.display = "none";
+        pieceDropperObj.style.display = "none";
+        pieceClickerDiv.style.display = "grid";
+    }
+} 
+
 ////  -------------------- Drag and drop --------------------
 const draggablePiece = document.querySelector("#draggable-piece");
 draggablePiece.addEventListener("dragstart", e=> {
@@ -238,18 +262,43 @@ draggablePiece.addEventListener("dragstart", e=> {
 });
 
 for (const dropZone of document.querySelectorAll(".drop-zone")){
-    dropZone.addEventListener("dragover", e=> {
+    dropZone.addEventListener("dragover", (e)=> {
         //needed to work since dragover invoked every few miliseconds
         e.preventDefault();
         dropZone.classList.add("drop-zone-over");
     });
 
-    dropZone.addEventListener("drop", e=> {
+    dropZone.addEventListener("drop", (e)=> {
         e.preventDefault();
 
         const droppedElementId = e.dataTransfer.getData("text/plain");
         if(droppedElementId === "draggable-piece"){
             console.log(e.target.dataset.value);
+
+            const playerTurnDisplay = document.querySelector("#display-player-turn").children[1].innerText;
+            if (playerTurnDisplay !== "1" && playerTurnDisplay !== "2"){
+                console.log("Press Start Game to play")
+                dropZone.classList.remove("drop-zone-over");
+                return null;
+            }
+        
+            const move = e.target.dataset.value;
+            
+            switch(gameStatus.mode){
+                case "hotSeat":
+                    makeMove(move,gameStatus.turn%2+1);
+                    break;
+                case "botMatch":
+                    const {botLevel,botNum} = gameStatus.botInfo;
+                    
+                    makeMove(move,botNum%2+1);
+                    if(!gameStatus.gameEnd){
+                        minmaxBot(gameBoard,botNum,botNum,botLevel,botLevel);
+                    }
+                    break;
+                default:
+                    break;
+            }
         };
 
         dropZone.classList.remove("drop-zone-over");
@@ -278,8 +327,8 @@ const gameStatus = {
 
 displayBoard(gameBoard.board);
 document.querySelector("#outcome-buttons").addEventListener("click",onClickBackHomeOrAgain);
-// document.querySelector("body").addEventListener('load',() => document.querySelector("#testModal").focus());
 document.querySelector("#button-game-start").addEventListener("click",onClickStartGame);
-document.querySelector("#piece-dropper").addEventListener("click",onClickMakeMove);
+document.querySelector("#button-toggle-drag").addEventListener("click",onClickToggleDragOrClick);
+document.querySelector("#piece-clicker").addEventListener("click",onClickMakeMove);
 document.querySelector("#game-mode-options").addEventListener("click",onClickUpdateGameMode);
 document.querySelector("#bot-level-options").addEventListener("click",onClickUpdateBotLevel);

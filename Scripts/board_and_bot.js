@@ -138,7 +138,7 @@ class Board {
     }
 }
 
-const medBot = (prevBoard,botPlayerNum,currPlayer,highestDepth,depth) => {
+const minmaxBot = (prevBoard,botPlayerNum,currPlayer,highestDepth,depth) => {
     const boardOutcomes = [];
     const moveValues = [];
     //Try all moves ${depth} steps deep
@@ -169,7 +169,7 @@ const medBot = (prevBoard,botPlayerNum,currPlayer,highestDepth,depth) => {
                 if (depth === 1){
                     moveValues.push(0);
                 } else {
-                    moveValues.push(medBot(board,botPlayerNum,currPlayer%2+1,highestDepth,depth-1))
+                    moveValues.push(minmaxBot(board,botPlayerNum,currPlayer%2+1,highestDepth,depth-1))
                 }
                 // **Recursion end** //                
             } else {

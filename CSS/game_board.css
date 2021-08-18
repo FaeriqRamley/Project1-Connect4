@@ -39,21 +39,21 @@ body{
 
 
 
-/* ---------- Piece Dropper ---------- */
-#piece-dropper {
+/* ---------- Piece Clicker/Dropper ---------- */
+#piece-clicker {
     margin: auto;
     width: 400px;
     height: 50px;
-    display: grid;
+    display: none;
     grid-template-columns: repeat(8,1fr);
     padding:0px;
 }
 
-#piece-dropper button {
+#piece-clicker button {
     background: transparent;
 }
 
-#piece-dropper-2 {
+#piece-dropper {
     margin: auto;
     width: 370px;
     height: 50px;
@@ -62,10 +62,10 @@ body{
     padding:0px;
 }
 
-#piece-dropper-2 .drop-zone {
+#piece-dropper .drop-zone {
     display:inline;
     width:1fr;
-    border:1px solid black;
+    overflow-y:visible;
 }
 
 .drop-zone-over {
@@ -80,6 +80,7 @@ body{
 }
 
 #draggable-piece {
+    display:block;
     width:32px;
     height:32px;
     border-radius: 50%;
