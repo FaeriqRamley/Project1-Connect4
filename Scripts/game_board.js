@@ -1,5 +1,7 @@
 'use strict';
 
+const currentProfile = getActiveAccount();
+
 //// Game Functions
 
 const displayBoard = (board) => {
@@ -62,7 +64,7 @@ const generateBotLayout = (botName) => {
     
     const player2Avatar = document.createElement("img")
     player2Avatar.className = "avatar-img";
-
+    player2Avatar.id = "player-2-avatar";
     const player2Name = document.createElement("h4");
 
     switch(botName){
@@ -81,9 +83,22 @@ const generateBotLayout = (botName) => {
         default:
             break;
     }
-
+    console.log(player2Avatar.src);
     document.querySelector("#player-2-col").append(player2Avatar);
     document.querySelector("#player-2-col").append(player2Name);
+}
+
+const generatePlayerLayout = () => {
+    const player1Avatar = document.createElement("img")
+    player1Avatar.className = "avatar-img";
+    player1Avatar.id = "player-1-avatar";
+    const player1Name = document.createElement("h4");
+
+    player1Avatar.src = currentProfile.userAvatarList[currentProfile.userAvatar];
+    player1Name.innerText = currentProfile.userName;
+    console.log(player1Avatar.src);
+    document.querySelector("#player-1-col").append(player1Avatar);
+    document.querySelector("#player-1-col").append(player1Name);
 }
 
 //// Click Functions
@@ -94,6 +109,7 @@ const onClickUpdateBotLevel = (e) => {
     gameStatus.botInfo.botLevel = parseInt(e.target.parentNode.dataset.value);
     console.log(gameStatus);
     generateBotLayout(e.target.id);
+    generatePlayerLayout();
 }
 
 const onClickUpdateGameMode = (e) => {
@@ -149,7 +165,6 @@ const gameStatus = {
 };
 
 displayBoard(gameBoard.board);
-
 document.querySelector("body").addEventListener('load',() => document.querySelector("#testModal").focus());
 document.querySelector("#button-game-start").addEventListener("click",startGame);
 document.querySelector("#piece-dropper").addEventListener("click",onClickMakeMove);

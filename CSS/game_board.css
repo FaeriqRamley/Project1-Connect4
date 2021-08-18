@@ -109,6 +109,12 @@ body{
 
 /* ---------- Player Sheets ---------- */
 
+#player-1-col{
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+}
+
 #player-2-col{
     display:flex;
     justify-content:center;

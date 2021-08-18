@@ -6,7 +6,7 @@ const profileStructure = {
     userCoins: 0,
     userAvatar: 0,
     userBoard: 0,
-    userAvatarList: ["../Assets/Images/Avatars/Sample_Avatar.png"],
+    userAvatarList: ["Assets/Images/Avatars/Sample_Avatar.png"],
     userBoardList: ["blue","red"],
     // Stats
     userWins:0,

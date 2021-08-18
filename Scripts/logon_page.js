@@ -37,6 +37,7 @@ const onClickEnterUser = (e) => {
     }
 }
 
+gameStorage.setItem("Active User","None");
 let currentProfile = {};
 copyProfile(currentProfile,profileStructure);
 
