@@ -50,17 +50,20 @@ const gameEndEvent = (gameWinner) => {
     const outcomeMessageDiv = document.querySelector("#outcome-message");
     const outcomeMessage = document.createElement("h1");
     let botName = ""
-
-    //Choose name of bot
+    let botCoins = 0;
+    //Choose name of bot & potential win earnings
     switch(gameStatus.botInfo.botLevel.toString()){
         case "2":
             botName = "Kiara";
+            botCoins = 50;
             break;
         case "4":
             botName = "Gura";
+            botCoins = 150;
             break;
         case "6":
             botName = "Amelia";
+            botCoins = 500;
             break;
         default:
             botName = "Bot";
@@ -87,6 +90,7 @@ const gameEndEvent = (gameWinner) => {
             } else {
                 currentProfile.userWins += 1;
                 currentProfile.userMatchOutcome.push(1*gameStatus.botInfo.botLevel)
+                currentProfile.userCoins += botCoins;
             }
 
             currentProfile.userMatchHistory.push(gameBoard.copyBoard())
