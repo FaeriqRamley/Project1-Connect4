@@ -58,6 +58,34 @@ const makeMove = (move,player) => {
     }
 }
 
+const generateBotLayout = (botName) => {
+    
+    const player2Avatar = document.createElement("img")
+    player2Avatar.className = "avatar-img";
+
+    const player2Name = document.createElement("h4");
+
+    switch(botName){
+        case "easy-bot":
+            player2Avatar.src = "Assets/Images/Avatars/easy_bot_playing.gif"
+            player2Name.innerText = "Takanashi Kiara"
+            break;
+        case "medium-bot":
+            player2Avatar.src = "Assets/Images/Avatars/medium_bot_playing.gif"
+            player2Name.innerText = "Gawr Gura"
+            break;
+        case "hard-bot":
+            player2Avatar.src = "Assets/Images/Avatars/hard_bot_playing.gif"
+            player2Name.innerText = "Amelia Watson"
+            break;
+        default:
+            break;
+    }
+
+    document.querySelector("#player-2-col").append(player2Avatar);
+    document.querySelector("#player-2-col").append(player2Name);
+}
+
 //// Click Functions
 const onClickUpdateBotLevel = (e) => {
     if(e.target.tagName !== "IMG"){
@@ -65,6 +93,7 @@ const onClickUpdateBotLevel = (e) => {
     }
     gameStatus.botInfo.botLevel = parseInt(e.target.parentNode.dataset.value);
     console.log(gameStatus);
+    generateBotLayout(e.target.id);
 }
 
 const onClickUpdateGameMode = (e) => {

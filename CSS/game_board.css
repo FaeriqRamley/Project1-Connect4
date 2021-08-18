@@ -4,6 +4,7 @@ body{
     background-size: cover;
 }
 
+/* ---------- Page Layout Settings ---------- */
 #game-wrapper {
     text-align: center;
     background-color: rgba(255,255,255,0.7);
@@ -25,8 +26,6 @@ body{
     text-align: center;
 }
 
-#page-wrapper .col-xl-4{
-}
 #page-wrapper #game-col{
     min-width:420px;
 }
@@ -36,11 +35,9 @@ body{
 #page-wrapper #player-2-col{
     min-width:420px;
 }
-/* ---------- Game Display ---------- */
-#game-display {
-    color: black;
-}
-/* ---------- ------------ ---------- */
+/* ---------- -------------------- ---------- */
+
+
 
 /* ---------- Piece Dropper ---------- */
 #piece-dropper {
@@ -95,6 +92,39 @@ body{
 }
 
 /* ---------- ---------- ---------- */
+
+/* ---------- Game Menu ---------- */
+#game-options{
+    text-align:center;
+}
+
+#game-options button{
+    display:block;
+    width:50%;
+    margin:3px auto;
+    background-color:none;
+    border-style:double;
+}
+/* ---------- --------- ---------- */
+
+/* ---------- Player Sheets ---------- */
+
+#player-2-col{
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.avatar-img{
+    display:block;
+    width:300px;
+    border: 5px rgb(61 40 4);
+    border-style:inset;
+    margin: 0 auto;
+}
+
+/* ---------- ------------- ---------- */
+
 
 /* ---------- Modal Settings ---------- */
 .modal-content{
