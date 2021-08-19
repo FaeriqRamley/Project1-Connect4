@@ -5,7 +5,7 @@ const currentProfile = getActiveAccount();
 const displayBasicUserInfo = () => {
     const userNameDiv = document.querySelector("#user-name");
     const statsDiv = document.querySelector("#user-stats");
-    const playerAvatar = document.querySelector("#player-avatar")
+    const playerAvatar = document.querySelector("#user-avatar")
 
     const playerName = document.createElement("h1");
     playerName.innerText = currentProfile.userName;

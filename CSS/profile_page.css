@@ -2,11 +2,11 @@ body {
     background-color: rgb(44, 94, 156);
 }
 
-div {
-    border:1px solid black;
+#user-stats {
+    font-size: 25px;
 }
 
-img {
+#user-avatar {
     border:3px solid black;
 }
 
@@ -49,9 +49,38 @@ img {
     background-color:rgba(0,0,0,0);
 }
 
+
+
+/* ---------- Match Info stuff ---------- */
+.match-info{
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+    padding:5px 0px;
+}
+
 .opponent-image{
     width:80%;
 }
+
+.match-info .col {
+    display: flex;
+    justify-content:center;
+    flex-direction:column;
+    font-size:30px;
+    
+}
+
+.match-info .info-lose{
+    background-color: rgba(255,0,0,0.5);
+}
+
+.match-info .info-win{
+    background-color: rgba(0,255,0,0.5);
+}
+
+
+/* ---------- ----------- ---------- */
+
 
 /* ---------- Board Stuff ---------- */
 

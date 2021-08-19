@@ -13,10 +13,10 @@
         <div id="content-wrapper">
             <div id="user-name"></div>
             <img
-                id="player-avatar"
+                id="user-avatar"
                 src=""/>
             <div class="row" id="user-stats"></div>
-            <div>Settings</div>
+            <div><h3>Settings</h3></div>
             <div class="accordion" id="settingsMenu">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
@@ -36,7 +36,15 @@
                         </button>
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#settingsMenu">
-                        <div class="accordion-body" id="customization"></div>
+                        <div class="accordion-body" id="customization">
+                            <form>
+                                <label>Select your avatar:</label>
+                                <input type="number"/>
+                                <label>Select your board style:</label>
+                                <input type="text"/>
+                                <button type="submit">Make changes</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
@@ -47,7 +55,7 @@
                         </button>
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#settingsMenu">
-                        <div class="accordion-body" id="game-settings"></div>
+                        <div class="accordion-body" id="game-settings">Coming soon</div>
                     </div>
                 </div>
             </div>
