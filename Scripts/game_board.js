@@ -157,7 +157,6 @@ const generatePlayerLayout = () => {
 
     player1Avatar.src = currentProfile.userAvatarList[currentProfile.userAvatar];
     player1Name.innerText = currentProfile.userName;
-    console.log(player1Avatar.src);
     document.querySelector("#player-1-col").append(player1Avatar);
     document.querySelector("#player-1-col").append(player1Name);
 }
@@ -242,7 +241,7 @@ const onClickBackHomeOrAgain = (e) => {
     }
 }
 
-const onClickToggleDragOrClick = () => {
+const onClickToggleDragOrClick = (e) => {
     const pieceDropperDiv = document.querySelector("#piece-dropper");
     const pieceClickerDiv = document.querySelector("#piece-clicker");
     const pieceDropperObj = document.querySelector("#draggable-piece");
@@ -252,10 +251,12 @@ const onClickToggleDragOrClick = () => {
         pieceDropperDiv.style.display = "grid";
         pieceDropperObj.style.display = "block";
         pieceClickerDiv.style.display = "none";
+        e.target.innerText = "Dropper";
     } else {
         pieceDropperDiv.style.display = "none";
         pieceDropperObj.style.display = "none";
         pieceClickerDiv.style.display = "grid";
+        e.target.innerText = "Clicker";
     }
 } 
 
