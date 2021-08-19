@@ -6,24 +6,14 @@ const profileStructure = {
     userCoins: 0,
     userAvatar: 0,
     userBoard: 0,
-    userAvatarList: ["Assets/Images/Avatars/Sample_Avatar.png"],
+    userAvatarList: ["Assets/Images/Avatars/Basic_Avatar.png"],
     userBoardList: ["blue","red"],
     // Stats
     userWins:0,
     userLoss:0,
     userDraw:0,
-    userMatchOutcome:[1,1,1,1],
-    userMatchHistory:[
-        [
-            [1,2],
-            [3,4]    
-        ],
-        [
-            [4,5],
-            [6,7]
-        ]
-    
-    ]
+    userMatchOutcome:[],
+    userMatchHistory:[]
 
 }
 
