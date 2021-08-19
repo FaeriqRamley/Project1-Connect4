@@ -23,9 +23,13 @@ body {
 }
 
 #content-wrapper{
-    background-color:bisque;
-    border: 8px solid rgb(61 40 4);
+    background-color:lightskyblue;
+    border: 11px solid rgb(107 107 106);
     
+}
+
+#return-main-page{
+    margin:15px;
 }
 
 .accordion{
@@ -77,8 +81,6 @@ body {
 .match-info .info-win{
     background-color: rgba(0,255,0,0.5);
 }
-
-
 /* ---------- ----------- ---------- */
 
 
