@@ -14,7 +14,6 @@ const profileStructure = {
     userDraw:0,
     userMatchOutcome:[],
     userMatchHistory:[]
-
 }
 
 const copyProfile = (newProfile,oldProfile) => {

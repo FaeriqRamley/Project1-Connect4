@@ -116,6 +116,7 @@ const onClickApplyCustomization = (e) => {
     if (newAvatar !== null && newBoard !== null){
         currentProfile.userAvatar = document.querySelector("#avatar-choice").nodeValue;
         currentProfile.userBoard = document.querySelector("#board-style").nodeValue;
+        saveprofile(currentProfile);
     } else{
         console.log("you must pick something for both!");
     }

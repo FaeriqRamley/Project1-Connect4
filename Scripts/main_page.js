@@ -21,6 +21,9 @@ const updateWidgetInfo = () => {
     const userNameDiv = document.querySelector("#widget-name");
     const coinsDiv = document.querySelector("#widget-coins");
     const statsDiv = document.querySelector("#widget-stats");
+    const widgetImageDiv = document.querySelector("#widget-image");
+    
+    widgetImageDiv.style.backgroundImage = `url(../${currentProfile.userAvatarList[currentProfile.userAvatar]})`;
 
     const playerName = document.createElement("div");
     playerName.innerText = currentProfile.userName;
