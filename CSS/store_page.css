@@ -46,6 +46,9 @@ body{
     grid-row-start: 6;
     grid-row-end: 16;
     border: 5px solid rgb(61 40 4);
+    display:flex;
+    justify-content:center;
+    flex-direction: column;
 }
 
 #item-title{
