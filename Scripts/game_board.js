@@ -134,8 +134,6 @@ const gameEndEvent = (gameWinner) => {
     outcomeScreen.style.display = "flex";
 }
 
-
-
 const generateBotLayout = (botName) => {
     const player2Avatar = document.createElement("img")
     player2Avatar.className = "avatar-img";
@@ -150,6 +148,7 @@ const generateBotLayout = (botName) => {
         case "medium-bot":
             player2Avatar.src = "Assets/Images/Avatars/medium_bot_playing.gif"
             player2Name.innerText = "Gawr Gura"
+            playBotSounds("medium_bot","intro",1);
             break;
         case "hard-bot":
             player2Avatar.src = "Assets/Images/Avatars/hard_bot_playing.gif"
@@ -197,6 +196,7 @@ const onClickUpdateBotLevel = (e) => {
         return null;
     }
     gameStatus.botInfo.botLevel = parseInt(e.target.parentNode.dataset.value);
+    gameStatus.botInfo.botName = e.target.id;
     console.log(gameStatus);
     generateBotLayout(e.target.id);
     generatePlayerLayout();
@@ -339,8 +339,9 @@ const gameStatus = {
     turn:0,
     mode:"botMatch",
     botInfo: {
-        botLevel: 6,
-        botNum: 2,
+        botName: "",
+        botLevel: 0,
+        botNum: 0,
     }
 };
 

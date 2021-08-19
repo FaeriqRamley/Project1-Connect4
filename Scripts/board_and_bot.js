@@ -236,3 +236,41 @@ const minmaxBot = (prevBoard,botPlayerNum,currPlayer,highestDepth,depth) => {
     }
 
 }
+
+const botNoiseFiles = {
+    easy_bot: {
+        intro: 0,
+        playing: 0,
+        win: 0,
+        lose: 0
+    },
+    medium_bot: {
+        intro: 3,
+        playing: 7,
+        win: 3,
+        lose: 1
+    },
+    hard_bot: {
+        intro: 0,
+        playing: 0,
+        win: 0,
+        lose: 0
+    }
+}
+
+const playBotSounds = (botName,status,playChance=1.0) => {
+    const rollChance = Math.random();
+    if (rollChance<playChance){
+        console.log("Play sound")
+        const botFiles = botNoiseFiles[botName];
+        const fileAmount = botFiles[status];
+        const chosenFile = Math.floor(Math.random()*fileAmount);
+
+        const audioURL = `../Assets/Sounds/Bot_Noises/${botName}_${status}_${chosenFile}.mp3`;
+        const audio = new Audio(audioURL);
+        audio.addEventListener("canplay", () => audio.play());
+
+    } else{
+        console.log("Don't play sound")
+    }
+}
