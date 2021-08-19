@@ -230,7 +230,10 @@ const onClickMakeMove = (e) => {
             makeMove(move,botNum%2+1);
             if(!gameStatus.gameEnd){
                 minmaxBot(gameBoard,botNum,botNum,botLevel,botLevel);
-                playBotSounds(gameStatus.botInfo.botName,"playing",0.4);
+                if(!gameStatus.gameEnd){
+                    playBotSounds(gameStatus.botInfo.botName,"playing",0.4);
+                }
+                
             }
             break;
         default:
@@ -347,6 +350,7 @@ const gameStatus = {
 displayBoard(gameBoard.board);
 document.querySelector("#outcome-buttons").addEventListener("click",onClickBackHomeOrAgain);
 document.querySelector("#button-game-start").addEventListener("click",onClickStartGame);
+document.querySelector("#button-return-home").addEventListener("click",onClickBackHomeOrAgain);
 document.querySelector("#button-toggle-drag").addEventListener("click",onClickToggleDragOrClick);
 document.querySelector("#piece-clicker").addEventListener("click",onClickMakeMove);
 document.querySelector("#game-mode-options").addEventListener("click",onClickUpdateGameMode);

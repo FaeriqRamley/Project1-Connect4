@@ -240,9 +240,9 @@ const minmaxBot = (prevBoard,botPlayerNum,currPlayer,highestDepth,depth) => {
 const botNoiseFiles = {
     easy_bot: {
         intro: 0,
-        playing: 0,
+        playing: 4,
         win: 0,
-        lose: 0
+        lose: 2
     },
     medium_bot: {
         intro: 3,
@@ -252,9 +252,9 @@ const botNoiseFiles = {
     },
     hard_bot: {
         intro: 0,
-        playing: 0,
-        win: 0,
-        lose: 0
+        playing: 6,
+        win: 1,
+        lose: 1
     }
 }
 
