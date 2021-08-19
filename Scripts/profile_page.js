@@ -7,6 +7,12 @@ const displayBasicUserInfo = () => {
     const statsDiv = document.querySelector("#user-stats");
     const playerAvatar = document.querySelector("#user-avatar")
 
+    if (userNameDiv.innerHTML !== ""){
+        userNameDiv.innerHTML = "";
+        statsDiv.innerHTML = "";
+        playerAvatar.innerHTML = "";
+    }
+
     const playerName = document.createElement("h1");
     playerName.innerText = currentProfile.userName;
     userNameDiv.append(playerName);
@@ -42,7 +48,6 @@ const displayBoardProfile = (board) => {
 
     return displayGrid;
 }
-
 
 const renderMatchHistory = () => {
     const matchHistoryDiv = document.querySelector("#match-history");
@@ -95,9 +100,34 @@ const renderMatchHistory = () => {
 
         matchHistoryDiv.append(matchInfo);
     }
-
-
 }
 
+const configureCustomizationOptions = () => {
+    const avatarInput = document.querySelector("#avatar-choice");
+    const boardInput = document.querySelector("#board-style");
+    avatarInput.max = currentProfile.userAvatarList.length - 1;
+    boardInput.max = currentProfile.userBoardList.length - 1;
+}
+
+const onClickApplyCustomization = (e) => {
+    e.preventDefault();
+    const newAvatar = document.querySelector("#avatar-choice").nodeValue;
+    const newBoard = document.querySelector("#board-style").nodeValue;
+    if (newAvatar !== null && newBoard !== null){
+        currentProfile.userAvatar = document.querySelector("#avatar-choice").nodeValue;
+        currentProfile.userBoard = document.querySelector("#board-style").nodeValue;
+    } else{
+        console.log("you must pick something for both!");
+    }
+    displayBasicUserInfo();
+}
+
+const onClickChangePageProfile = (e) => {
+    window.location.assign(e.target.value);
+}
+
+document.querySelector("#submit-customization").addEventListener("click",onClickApplyCustomization);
+document.querySelector("#return-main-page").addEventListener("click",onClickChangePageProfile);
+configureCustomizationOptions();
 displayBasicUserInfo();
 renderMatchHistory();

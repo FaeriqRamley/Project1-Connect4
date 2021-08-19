@@ -2,7 +2,7 @@
 
 const currentProfile = getActiveAccount();
 
-const onClickChangePage = (e) => {
+const onClickChangePageMain = (e) => {
     if(e.target.className !== "nav-option" && e.target.parentNode.className !== "nav-option"){
         return null;
     };
@@ -36,4 +36,4 @@ const updateWidgetInfo = () => {
 }
 
 updateWidgetInfo();
-document.querySelector(".wrapper").addEventListener("click",onClickChangePage);
+document.querySelector(".wrapper").addEventListener("click",onClickChangePageMain);

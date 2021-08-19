@@ -120,3 +120,25 @@ body {
 }
 
 /* ---------- ---------- ---------- */
+
+
+/* ---------- Customization ---------- */
+#customization form{
+    display:flex;
+    justify-content: center;
+    flex-direction:column;
+}
+
+#customization form input{
+    margin:5px auto;
+    /* width:30%; */
+    max-width:500px;
+    text-align:center;
+}
+
+#customization form button{
+    margin:3px auto;
+    /* width:30%; */
+    max-width:500px;
+}
+/* ---------- ------------- ---------- */

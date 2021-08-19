@@ -39,10 +39,10 @@
                         <div class="accordion-body" id="customization">
                             <form>
                                 <label>Select your avatar:</label>
-                                <input type="number"/>
+                                <input id="avatar-choice" type="number" min="0"/>
                                 <label>Select your board style:</label>
-                                <input type="text"/>
-                                <button type="submit">Make changes</button>
+                                <input id="board-style" type="number" min="0"/>
+                                <button id="submit-customization" type="submit">Make changes</button>
                             </form>
                         </div>
                     </div>
@@ -59,7 +59,9 @@
                     </div>
                 </div>
             </div>
-        
+            <div>
+                <button id="return-main-page" value="main_page.html">Return to Main</button>
+            </div>
         </div>
     </div>
 
