@@ -21,8 +21,6 @@ const updateWidgetInfo = () => {
     const userNameDiv = document.querySelector("#widget-name");
     const coinsDiv = document.querySelector("#widget-coins");
     const statsDiv = document.querySelector("#widget-stats");
-    
-    console.log("updating widget");
 
     const playerName = document.createElement("div");
     playerName.innerText = currentProfile.userName;
@@ -35,8 +33,6 @@ const updateWidgetInfo = () => {
     const playerStats = document.createElement("div");
     playerStats.innerText = `${currentProfile.userWins}W - ${currentProfile.userLoss}L - ${currentProfile.userDraw}D`
     statsDiv.append(playerStats);
-
-    
 }
 
 updateWidgetInfo();

@@ -12,7 +12,7 @@ img {
 
 #page-wrapper{
     width: 95%;
-    /* max-width:1200px; */
+    max-width:1200px;
     min-width: 700px;
     height: 100vh;
     text-align: center;
@@ -33,9 +33,10 @@ img {
     min-width: 500px;
     margin:auto;
 }
+
 .accordion-body{
     background-color:rgba(0,0,0,0);
-    max-height: 600px;
+    max-height: 500px;
     overflow:auto;
 }
 
