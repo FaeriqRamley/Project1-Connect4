@@ -64,40 +64,37 @@ const gameEndEvent = (gameWinner) => {
     const outcomeScreen = document.querySelector("#outcome-screen");
     const outcomeMessageDiv = document.querySelector("#outcome-message");
     const outcomeMessage = document.createElement("h1");
-    let botName = ""
-    let botAvatarName = ""
+    let botDisplayName = ""
     let botCoins = 0;
+    const botName = gameStatus.botInfo.botName;
+
     //Choose name of bot & potential win earnings
     switch(gameStatus.botInfo.botLevel.toString()){
         case "2":
-            botName = "Kiara";
-            botAvatarName = "Easy_bot"
+            botDisplayName = "Kiara";
             botCoins = 50;
             break;
         case "4":
-            botName = "Gura";
-            botAvatarName = "Medium_bot"
+            botDisplayName = "Gura";
             botCoins = 150;
             break;
         case "6":
-            botName = "Amelia";
-            botAvatarName = "Hard_bot"
+            botDisplayName = "Amelia";
             botCoins = 500;
             break;
         default:
-            botName = "Bot";
+            botDisplayName = "Bot";
             break;
     }
 
     switch(gameStatus.mode){
         case "botMatch":
             gameStatus.winner = gameWinner;
-            let botAvatarOutcome = "";
-
+            let botOutcome = "";
             
             if(gameWinner === gameStatus.botInfo.botNum){
-                outcomeMessage.innerText = `You Lost to ${botName}!`;
-                botAvatarOutcome = "win";
+                outcomeMessage.innerText = `You Lost to ${botDisplayName}!`;
+                botOutcome = "win";
 
                 currentProfile.userLoss += 1;
                 currentProfile.userMatchOutcome.push(-1*gameStatus.botInfo.botLevel);
@@ -107,8 +104,8 @@ const gameEndEvent = (gameWinner) => {
                 currentProfile.userDraw += 1;
                 currentProfile.userMatchOutcome.push(10*gameStatus.botInfo.botLevel);
             } else {
-                outcomeMessage.innerText = `You Beat ${botName}!`;
-                botAvatarOutcome = "lose";
+                outcomeMessage.innerText = `You Beat ${botDisplayName}!`;
+                botOutcome = "lose";
 
                 currentProfile.userWins += 1;
                 currentProfile.userMatchOutcome.push(1*gameStatus.botInfo.botLevel);
@@ -117,7 +114,8 @@ const gameEndEvent = (gameWinner) => {
 
             //update botAvatar
             const botAvatar = document.querySelector("#player-2-avatar");
-            botAvatar.src = `Assets/Images/Avatars/${botAvatarName}_${botAvatarOutcome}.gif`;
+            botAvatar.src = `Assets/Images/Avatars/${botName}_${botOutcome}.gif`;
+            playBotSounds(botName,botOutcome,1);
 
             //save game
             currentProfile.userMatchHistory.push(gameBoard.copyBoard())
@@ -139,7 +137,8 @@ const generateBotLayout = (botName) => {
     player2Avatar.className = "avatar-img";
     player2Avatar.id = "player-2-avatar";
     const player2Name = document.createElement("h4");
-    player2Avatar.src = `Assets/Images/Avatars/${botName}_playing.gif`
+    player2Avatar.src = `Assets/Images/Avatars/${botName}_playing.gif`;
+
     switch(botName){
         case "easy_bot":
             player2Name.innerText = "Takanashi Kiara";
@@ -229,6 +228,7 @@ const onClickMakeMove = (e) => {
             
             makeMove(move,botNum%2+1);
             if(!gameStatus.gameEnd){
+                playBotSounds(gameStatus.botInfo.botName,"playing",0.4);
                 minmaxBot(gameBoard,botNum,botNum,botLevel,botLevel);
             }
             break;
@@ -339,7 +339,7 @@ const gameStatus = {
     botInfo: {
         botName: "",
         botLevel: 0,
-        botNum: 0,
+        botNum: 2,
     }
 };
 
