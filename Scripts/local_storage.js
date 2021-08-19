@@ -3,7 +3,7 @@
 const profileStructure = {
     // Profile
     userName: "",
-    userCoins: 2000000,
+    userCoins: 8000,
     userAvatar: 0,
     userBoard: 0,
     userAvatarList: ["Assets/Images/Avatars/Basic_Avatar.png"],

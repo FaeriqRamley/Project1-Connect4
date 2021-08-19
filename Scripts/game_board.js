@@ -63,6 +63,7 @@ const gameEndEvent = (gameWinner) => {
     gameStatus.gameEnd = true;
     const outcomeScreen = document.querySelector("#outcome-screen");
     const outcomeMessageDiv = document.querySelector("#outcome-message");
+    outcomeMessageDiv.innerHTML = "";
     const outcomeMessage = document.createElement("h1");
     let botDisplayName = ""
     let botCoins = 0;
