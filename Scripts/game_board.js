@@ -229,8 +229,8 @@ const onClickMakeMove = (e) => {
             
             makeMove(move,botNum%2+1);
             if(!gameStatus.gameEnd){
-                playBotSounds(gameStatus.botInfo.botName,"playing",0.4);
                 minmaxBot(gameBoard,botNum,botNum,botLevel,botLevel);
+                playBotSounds(gameStatus.botInfo.botName,"playing",0.4);
             }
             break;
         default:
