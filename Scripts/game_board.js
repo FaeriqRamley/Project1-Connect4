@@ -139,24 +139,23 @@ const generateBotLayout = (botName) => {
     player2Avatar.className = "avatar-img";
     player2Avatar.id = "player-2-avatar";
     const player2Name = document.createElement("h4");
-
+    player2Avatar.src = `Assets/Images/Avatars/${botName}_playing.gif`
     switch(botName){
-        case "easy-bot":
-            player2Avatar.src = "Assets/Images/Avatars/easy_bot_playing.gif"
-            player2Name.innerText = "Takanashi Kiara"
+        case "easy_bot":
+            player2Name.innerText = "Takanashi Kiara";
             break;
-        case "medium-bot":
-            player2Avatar.src = "Assets/Images/Avatars/medium_bot_playing.gif"
-            player2Name.innerText = "Gawr Gura"
-            playBotSounds("medium_bot","intro",1);
+        case "medium_bot":
+            player2Name.innerText = "Gawr Gura";
             break;
-        case "hard-bot":
-            player2Avatar.src = "Assets/Images/Avatars/hard_bot_playing.gif"
-            player2Name.innerText = "Amelia Watson"
+        case "hard_bot":
+            player2Name.innerText = "Amelia Watson";
             break;
         default:
+            player2Name.innerText = "Unknown Bot";
             break;
     }
+    
+    playBotSounds(botName,"intro",1);
     console.log(player2Avatar.src);
     document.querySelector("#player-2-col").append(player2Avatar);
     document.querySelector("#player-2-col").append(player2Name);
@@ -196,9 +195,9 @@ const onClickUpdateBotLevel = (e) => {
         return null;
     }
     gameStatus.botInfo.botLevel = parseInt(e.target.parentNode.dataset.value);
-    gameStatus.botInfo.botName = e.target.id;
+    gameStatus.botInfo.botName = e.target.dataset.value;
     console.log(gameStatus);
-    generateBotLayout(e.target.id);
+    generateBotLayout(gameStatus.botInfo.botName);
     generatePlayerLayout();
 }
 
