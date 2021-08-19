@@ -9,8 +9,11 @@ div {
 img {
     border:3px solid black;
 }
+
 #page-wrapper{
     width: 95%;
+    /* max-width:1200px; */
+    min-width: 700px;
     height: 100vh;
     text-align: center;
     margin:auto;
@@ -18,3 +21,30 @@ img {
     flex-direction: column;
     justify-content: center;
 }
+
+#content-wrapper{
+    background-color:bisque;
+    border: 8px solid rgb(61 40 4);
+    
+}
+
+.accordion{
+    width:80%;
+    min-width: 500px;
+    margin:auto;
+}
+.accordion-body{
+    background-color:rgba(0,0,0,0);
+    max-height: 600px;
+    overflow:auto;
+}
+
+.accordion-item{
+    background-color: rgba(0,0,0,0);
+}
+
+
+.accordion-header{
+    background-color:rgba(0,0,0,0);
+}
+
