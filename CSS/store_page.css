@@ -1,8 +1,7 @@
 body{
-    background-color: rgb(185, 224, 221);
+    background-color: rgb(87, 121, 118);
     text-align:center;
 }
-
 
 #page-wrapper{
     height:98vh;
@@ -32,6 +31,13 @@ body{
     grid-row-start: 2;
     grid-row-end: 5;
     border: 5px solid rgb(61 40 4);
+    display:flex;
+    justify-content:center;
+    flex-direction: column;
+}
+
+#coin-display h3{
+    color:rgb(189, 189, 87);
 }
 
 #item-display{
@@ -55,6 +61,15 @@ body{
     grid-row-start: 17;
     grid-row-end: 20;
     border: 5px solid rgb(61 40 4);
+}
+
+#menu-display h2{
+    pointer-events: none;
+}
+
+#menu-display h4{
+    pointer-events: none;
+    color:rgb(189, 189, 87);
 }
 
 #menu-display .col{
