@@ -264,6 +264,9 @@ const playBotSounds = (botName,status,playChance=1.0) => {
         console.log("Play sound")
         const botFiles = botNoiseFiles[botName];
         const fileAmount = botFiles[status];
+        if (fileAmount === 0){
+            return null;
+        }
         const chosenFile = Math.floor(Math.random()*fileAmount);
 
         const audioURL = `../Assets/Sounds/Bot_Noises/${botName}_${status}_${chosenFile}.mp3`;

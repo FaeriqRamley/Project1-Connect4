@@ -154,9 +154,8 @@ const generateBotLayout = (botName) => {
             player2Name.innerText = "Unknown Bot";
             break;
     }
-    
+
     playBotSounds(botName,"intro",1);
-    console.log(player2Avatar.src);
     document.querySelector("#player-2-col").append(player2Avatar);
     document.querySelector("#player-2-col").append(player2Name);
 }
