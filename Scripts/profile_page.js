@@ -25,9 +25,79 @@ const displayBasicUserInfo = () => {
     
 }
 
+const displayBoardProfile = (board) => {
+    const displayGrid = document.createElement("div");
+    displayGrid.className = "board-display";
+
+    for (let row = 0; row<board.length;row++){
+        for (let col = 0; col<board[row].length;col++){
+            const gamePiece = document.createElement("div");
+            gamePiece.className = `player-${board[row][col]}`
+            gamePiece.style.gridColumnStart = `${col+1}`;
+            gamePiece.style.gridRowStart = `${row+1}`;
+            gamePiece.innerText = "O";
+            displayGrid.append(gamePiece);
+        }
+    }
+
+    return displayGrid;
+}
+
 
 const renderMatchHistory = () => {
-    document.querySelector("#match-history");
+    const matchHistoryDiv = document.querySelector("#match-history");
+    const {userMatchHistory,userMatchOutcome} = currentProfile;
+    console.log(userMatchHistory);
+    console.log(userMatchOutcome);
+
+    for (let ind=0;ind<userMatchOutcome.length;ind++){
+        const matchInfo = document.createElement("div");
+        matchInfo.className = "row match-info";
+
+        //show outcome
+        const outcomeCol = document.createElement("div");
+        outcomeCol.className = "col";
+        if (userMatchOutcome[ind] < 0){
+            outcomeCol.innerText = "Lose";
+            outcomeCol.classList.add("info-lose");
+        } else if (userMatchOutcome[ind] < 10){
+            outcomeCol.innerText = "Win";
+            outcomeCol.classList.add("info-win");
+        } else{
+            outcomeCol.innerText = "Draw";
+            outcomeCol.classList.add("info-draw");
+        }
+        matchInfo.append(outcomeCol);
+
+        //show gameboard
+        const boardCol = document.createElement("div");
+        boardCol.className = "col-6 info-board";
+        boardCol.append(displayBoardProfile(userMatchHistory[ind]));
+        matchInfo.append(boardCol);
+
+        //show enemy picture
+        const opponentCol = document.createElement("div");
+        opponentCol.className = "col info-opponent";
+        const opponentImg = document.createElement("img");
+        let opponent = ""
+        if(Math.abs(userMatchOutcome[ind]) === 2 || Math.abs(userMatchOutcome[ind]) === 20){
+            opponent = "easy_bot";
+        } else if(Math.abs(userMatchOutcome[ind]) === 4 || Math.abs(userMatchOutcome[ind]) === 40){
+            opponent = "medium_bot";
+        } else if(Math.abs(userMatchOutcome[ind]) === 6 || Math.abs(userMatchOutcome[ind]) === 60){
+            opponent = "hard_bot";
+        }
+        
+        opponentImg.src = `Assets/Images/Icons/profile_${opponent}.gif`;
+        opponentImg.className = "opponent-image";
+        opponentCol.append(opponentImg);
+        matchInfo.append(opponentCol);
+
+        matchHistoryDiv.append(matchInfo);
+    }
+
+
 }
 
 displayBasicUserInfo();
+renderMatchHistory();
