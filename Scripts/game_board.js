@@ -43,70 +43,6 @@ const toggleGameButtons = (toggle) => {
     }
 }
 
-const gameEndEvent = (gameWinner) => {
-    gameStatus.winner = gameWinner;
-    gameStatus.gameEnd = true;
-    const outcomeScreen = document.querySelector("#outcome-screen");
-    const outcomeMessageDiv = document.querySelector("#outcome-message");
-    const outcomeMessage = document.createElement("h1");
-    let botName = ""
-    let botCoins = 0;
-    //Choose name of bot & potential win earnings
-    switch(gameStatus.botInfo.botLevel.toString()){
-        case "2":
-            botName = "Kiara";
-            botCoins = 50;
-            break;
-        case "4":
-            botName = "Gura";
-            botCoins = 150;
-            break;
-        case "6":
-            botName = "Amelia";
-            botCoins = 500;
-            break;
-        default:
-            botName = "Bot";
-            break;
-    }
-
-    switch(gameStatus.mode){
-        case "botMatch":
-            gameStatus.winner = gameWinner;
-            //update outcome message
-            if(gameStatus.winner === gameStatus.botInfo.botNum){
-                outcomeMessage.innerText = `You Lost to ${botName}!`;
-            } else {
-                outcomeMessage.innerText = `You Beat ${botName}!`;
-            }
-
-            //update currentProfile
-            if(gameWinner === gameStatus.botInfo.botNum){
-                currentProfile.userLoss += 1;
-                currentProfile.userMatchOutcome.push(-1*gameStatus.botInfo.botLevel)
-            } else if (gameWinner === 0){
-                currentProfile.userDraw += 1;
-                currentProfile.userMatchOutcome.push(10*gameStatus.botInfo.botLevel)
-            } else {
-                currentProfile.userWins += 1;
-                currentProfile.userMatchOutcome.push(1*gameStatus.botInfo.botLevel)
-                currentProfile.userCoins += botCoins;
-            }
-
-            currentProfile.userMatchHistory.push(gameBoard.copyBoard())
-            saveProfile(currentProfile);
-            break;
-        case "hotSeat":
-            outcomeMessage.innerText = `Player ${gameWinner} won!`
-            break;
-        default:
-            break;
-    }
-
-    outcomeMessageDiv.append(outcomeMessage);
-    outcomeScreen.style.display = "flex";
-}
-
 const makeMove = (move,player) => {
     let madeValidMove = gameBoard.add(parseInt(move),player)
     
@@ -121,6 +57,84 @@ const makeMove = (move,player) => {
         }
     }
 }
+
+const gameEndEvent = (gameWinner) => {
+    gameStatus.winner = gameWinner;
+    gameStatus.gameEnd = true;
+    const outcomeScreen = document.querySelector("#outcome-screen");
+    const outcomeMessageDiv = document.querySelector("#outcome-message");
+    const outcomeMessage = document.createElement("h1");
+    let botName = ""
+    let botAvatarName = ""
+    let botCoins = 0;
+    //Choose name of bot & potential win earnings
+    switch(gameStatus.botInfo.botLevel.toString()){
+        case "2":
+            botName = "Kiara";
+            botAvatarName = "Easy_bot"
+            botCoins = 50;
+            break;
+        case "4":
+            botName = "Gura";
+            botAvatarName = "Medium_bot"
+            botCoins = 150;
+            break;
+        case "6":
+            botName = "Amelia";
+            botAvatarName = "Hard_bot"
+            botCoins = 500;
+            break;
+        default:
+            botName = "Bot";
+            break;
+    }
+
+    switch(gameStatus.mode){
+        case "botMatch":
+            gameStatus.winner = gameWinner;
+            let botAvatarOutcome = "";
+
+            
+            if(gameWinner === gameStatus.botInfo.botNum){
+                outcomeMessage.innerText = `You Lost to ${botName}!`;
+                botAvatarOutcome = "win";
+
+                currentProfile.userLoss += 1;
+                currentProfile.userMatchOutcome.push(-1*gameStatus.botInfo.botLevel);
+
+                
+            } else if (gameWinner === 0){
+                currentProfile.userDraw += 1;
+                currentProfile.userMatchOutcome.push(10*gameStatus.botInfo.botLevel);
+            } else {
+                outcomeMessage.innerText = `You Beat ${botName}!`;
+                botAvatarOutcome = "lose";
+
+                currentProfile.userWins += 1;
+                currentProfile.userMatchOutcome.push(1*gameStatus.botInfo.botLevel);
+                currentProfile.userCoins += botCoins;
+            }
+
+            //update botAvatar
+            const botAvatar = document.querySelector("#player-2-avatar");
+            botAvatar.src = `Assets/Images/Avatars/${botAvatarName}_${botAvatarOutcome}.gif`;
+
+            //save game
+            currentProfile.userMatchHistory.push(gameBoard.copyBoard())
+            saveProfile(currentProfile);
+            break;
+        case "hotSeat":
+            outcomeMessage.innerText = `Player ${gameWinner} won!`
+            break;
+        default:
+            break;
+    }
+
+    outcomeMessageDiv.append(outcomeMessage);
+    outcomeScreen.style.display = "flex";
+}
+
+
 
 const generateBotLayout = (botName) => {
     const player2Avatar = document.createElement("img")
