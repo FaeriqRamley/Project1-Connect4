@@ -1,6 +1,7 @@
 'use strict';
 
 const currentProfile = getActiveAccount();
+console.log(currentProfile);
 
 const displayBasicUserInfo = () => {
     const userNameDiv = document.querySelector("#user-name");
@@ -52,8 +53,8 @@ const displayBoardProfile = (board) => {
 const renderMatchHistory = () => {
     const matchHistoryDiv = document.querySelector("#match-history");
     const {userMatchHistory,userMatchOutcome} = currentProfile;
-    console.log(userMatchHistory);
-    console.log(userMatchOutcome);
+    // console.log(userMatchHistory);
+    // console.log(userMatchOutcome);
 
     for (let ind=0;ind<userMatchOutcome.length;ind++){
         const matchInfo = document.createElement("div");
@@ -111,12 +112,15 @@ const configureCustomizationOptions = () => {
 
 const onClickApplyCustomization = (e) => {
     e.preventDefault();
-    const newAvatar = document.querySelector("#avatar-choice").nodeValue;
-    const newBoard = document.querySelector("#board-style").nodeValue;
-    if (newAvatar !== null && newBoard !== null){
-        currentProfile.userAvatar = document.querySelector("#avatar-choice").nodeValue;
-        currentProfile.userBoard = document.querySelector("#board-style").nodeValue;
-        saveprofile(currentProfile);
+    const newAvatar = document.querySelector("#avatar-choice").value;
+    const newBoard = document.querySelector("#board-style").value;
+    console.log(currentProfile);
+    console.log(newAvatar);
+    console.log(newBoard);
+    if (newAvatar !== "" && newBoard !== ""){
+        currentProfile.userAvatar = parseInt(document.querySelector("#avatar-choice").value);
+        currentProfile.userBoard = parseInt(document.querySelector("#board-style").value);
+        saveProfile(currentProfile);
     } else{
         console.log("you must pick something for both!");
     }
@@ -129,6 +133,6 @@ const onClickChangePageProfile = (e) => {
 
 document.querySelector("#submit-customization").addEventListener("click",onClickApplyCustomization);
 document.querySelector("#return-main-page").addEventListener("click",onClickChangePageProfile);
-configureCustomizationOptions();
 displayBasicUserInfo();
+configureCustomizationOptions();
 renderMatchHistory();
